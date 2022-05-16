@@ -1,4 +1,4 @@
-setInterval(function(){game.tick()},200)
+setInterval(function(){game.tick()},5)
 setInterval(function(){
     var catpower=gamePage.resPool.get('manpower');
     if(catpower.value/catpower.maxValue>0.95) {
