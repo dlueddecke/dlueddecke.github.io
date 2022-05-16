@@ -1,5 +1,27 @@
 setInterval(
   function(){
+    
+		var catnip = gamePage.resPool.get('catnip');
+		var wood = gamePage.resPool.get('wood');
+		var minerals = gamePage.resPool.get('minerals');
+		var coal = gamePage.resPool.get('coal');
+		var iron = gamePage.resPool.get('iron');
+		var titanium = gamePage.resPool.get('titanium');
+		var gold = gamePage.resPool.get('gold');
+		var oil = gamePage.resPool.get('oil');
+		var uranium = gamePage.resPool.get('uranium');
+		var unobtainium = gamePage.resPool.get('unobtainium');
+		var antimatter = gamePage.resPool.get('antimatter');
+		var catpower = gamePage.resPool.get('manpower');
+		var science = gamePage.resPool.get('science');
+		var culture = gamePage.resPool.get('culture');
+		var faith = gamePage.resPool.get('faith');
+		var starchart = gamePage.resPool.get('starchart');
+		
+		if (catnip.unlocked && wood.unlocked) {
+				if (catnip.value / catnip.maxValue > 0.95) {gamePage.craft('wood', 1)}
+		}    
+        
     var catpower=gamePage.resPool.get('manpower');
     if(catpower.value/catpower.maxValue>0.95) {
         gamePage.village.huntAll();
