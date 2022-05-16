@@ -17,7 +17,7 @@ setInterval(
 		var culture = gamePage.resPool.get('culture');
 		var faith = gamePage.resPool.get('faith');
 		var starchart = gamePage.resPool.get('starchart');
-		
+
 		if (catnip.unlocked && wood.unlocked) {
 				if (catnip.value / catnip.maxValue > 0.95) {gamePage.craft('wood', 1)}
 		}    
