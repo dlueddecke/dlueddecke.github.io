@@ -1,3 +1,3 @@
 layout: page
-title: "HELLOW WORLD"
+title: "HELLO WORLD"
 permalink: /HelloWorld/
