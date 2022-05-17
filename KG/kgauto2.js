@@ -18,73 +18,103 @@ setInterval(
         // var faith = gamePage.resPool.get('faith');
         // var starchart = gamePage.resPool.get('starchart');
 
-        // var wood2 = gamePage.workshop.getCraft('wood');
-        var beam = gamePage.workshop.getCraft('beam');
-        var slab = gamePage.workshop.getCraft('slab');
-        var plate = gamePage.workshop.getCraft('plate');
-        var steel = gamePage.workshop.getCraft('steel');
-        // var concrete = gamePage.workshop.getCraft('concrate');
-        var gear = gamePage.workshop.getCraft('gear');
-        var alloy = gamePage.workshop.getCraft('alloy');
-        var scaffold = gamePage.workshop.getCraft('scaffold');
-        // var thorium = gamePage.workshop.getCraft('thorium');
+        var beam = gamePage.resPool.get('beam');
+        var slab = gamePage.resPool.get('slab');
+        var plate = gamePage.resPool.get('plate');
+        var steel = gamePage.resPool.get('steel');
+        // var concrete = gamePage.res.get('concrate');
+        var gear = gamePage.resPool.get('gear');
+        var alloy = gamePage.resPool.get('alloy');
+        var scaffold = gamePage.resPool.get('scaffold');
+        // var thorium = gamePage.resPool.get('thorium');
+        var parchment = gamePage.resPool.get('parchment');
+        var manuscript = gamePage.resPool.get('manuscript');
+        var compendium = gamePage.resPool.get('compedium');
+        var blueprint = gamePage.resPool.get('blueprint');
 
-        var parchment = gamePage.workshop.getCraft('parchment');
-        var manuscript = gamePage.workshop.getCraft('manuscript');
-        var compendium = gamePage.workshop.getCraft('compedium');
-        var blueprint = gamePage.workshop.getCraft('blueprint');
+        var woodC = gamePage.workshop.getCraft('wood');
+        var beamC = gamePage.workshop.getCraft('beam');
+        var slabC = gamePage.workshop.getCraft('slab');
+        var plateC = gamePage.workshop.getCraft('plate');
+        var steelC = gamePage.workshop.getCraft('steel');
+        // var concreteC = gamePage.workshop.getCraft('concrate');
+        var gearC = gamePage.workshop.getCraft('gear');
+        var alloyC = gamePage.workshop.getCraft('alloy');
+        var scaffoldC = gamePage.workshop.getCraft('scaffold');
+        // var thoriumC = gamePage.workshop.getCraft('thorium');
+        var parchmentC = gamePage.workshop.getCraft('parchment');
+        var manuscriptC = gamePage.workshop.getCraft('manuscript');
+        var compendiumC = gamePage.workshop.getCraft('compedium');
+        var blueprintC = gamePage.workshop.getCraft('blueprint');
 
-        var res = [
-            [wood, catnip, 'wood'],
-            [beam, wood, 'beam'],
-            [slab, minerals, 'slab'],
-            [plate, iron, 'plate'],
-            [steel, coal, 'steel'],
-            [gear, steel, 'gear'],
-            [alloy, titanium, 'alloy']
-
+        var res1 = [
+            [woodC, catnip, wood, 'wood'],
+            [beamC, wood, beam, 'beam'],
+            [slabC, minerals, slab, 'slab'],
+            [plateC, iron, plate, 'plate'],
+            // [alloy, titanium, 'alloy']
         ]
 
-        for (var i = 0; i < res.length; i++) {
-            if (res[i][0].unlocked) {
-                if (res[i][1].value / res[i][1].maxValue > 0.99) {
-                    gamePage.craft(res[i][2], 1);
+        for (var i = 0; i < res1.length; i++) {
+            if (res1[i][0].unlocked) {
+                if (res1[i][1].value / res1[i][1].maxValue > 0.99) {
+                    gamePage.craft(res1[i][3], 1);
                 }
             }
         }
 
         var res2 = [
+            [gearC, steel, gear, 'gear'],
+            [scaffoldC, beam, scaffold, 'scaffold'],
+            [compendiumC, manuscript, compendium, 'compedium'],
+            [blueprintC, compendium, blueprint, 'blueprint']
+
             // [concrete, steel, 'concrate'],
-            [gear, steel, 'gear'],
-            // [alloy, steel, 'alloy']
-            [scaffold, beam, 'scaffold']
-        //     // [thorium, 'thorium']
+            // [thorium, 'thorium']
         ]
 
         for (var i = 0; i < res2.length; i++) {
             if (res2[i][0].unlocked) {
-                if (res2[i][1].value < res2[i][0].value) {
-                    gamePage.craft(res2[i][2], 1);
+                if (res2[i][1].value > res2[i][2].value) {
+                    gamePage.craft(res2[i][3], 1);
                 }
             }
         }
 
-        if (catpower.value / catpower.maxValue > 0.95) {
+        var res3 = [
+            [steelC, coal, iron, steel, 'steel']
+            [alloyC, titanium, steel, alloy, 'alloy']
+        ]
+
+        for (var i = 0; i < res3.length; i++) {
+            if (res3[i][0].unlocked) {
+                if(res3[i][2].value > res3[i][3].value && res3[i][2].value > res[i][4].value) {
+                    gamePage.craft(res3[i][4], 1);
+                }
+            }
+        }
+
+        // // var gear = gamePage.workshop.getCraft('gear');
+        // var gear1 = gamePage.resPool.get('gear');
+        // console.log(['gear value', gear.unlocked, gear1.value]);
+        //
+        // var alloy1 = gamePage.resPool.get('alloy');
+        // var alloy = gamePage.workshop.getCraft('alloy');
+        // console.log(['alloy value', alloy.unlocked, alloy1.value]);
+        //
+        // console.log(['scaffold value', scaffold.unlocked, scaffold.value]);
+
+        if (catpower.value / catpower.maxValue > 0.99) {
             gamePage.village.huntAll();
-            if(parchment.unlocked) {
+            if(parchmentC.unlocked) {
                 gamePage.craftAll('parchment');
             }
         }
+
         if (culture.value / culture.maxValue > 0.99) {
-            if(manuscript.unlocked && manuscript.value < parchment.value) {
+            if(manuscriptC.unlocked && manuscript.value < parchment.value) {
                 gamePage.craft('manuscript', 1);
             }
-        }
-        if(compendium.unlocked && compendium.value < manuscript.value) {
-            gamePage.craft('compedium', 1);
-        }
-        if(blueprint.unlocked && blueprint.value < compendium.value) {
-            gamePage.craft('blueprint', 1);
         }
 
     game.tick()
