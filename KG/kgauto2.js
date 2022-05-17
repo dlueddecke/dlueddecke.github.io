@@ -13,7 +13,7 @@ setInterval(
         // var unobtainium = gamePage.resPool.get('unobtainium');
         // var antimatter = gamePage.resPool.get('antimatter');
         var catpower = gamePage.resPool.get('manpower');
-        // var science = gamePage.resPool.get('science');
+        var science = gamePage.resPool.get('science');
         var culture = gamePage.resPool.get('culture');
         // var faith = gamePage.resPool.get('faith');
         // var starchart = gamePage.resPool.get('starchart');
@@ -74,7 +74,7 @@ setInterval(
 
         for (var i = 0; i < res2.length; i++) {
             if (res2[i][0].unlocked) {
-                if (res2[i][1].value > res2[i][2].value) {
+                if (res2[i][1].value > res2[i][2].value && science.value / science.maxValue > 0.99) {
                     gamePage.craft(res2[i][3], 1);
                 }
             }
