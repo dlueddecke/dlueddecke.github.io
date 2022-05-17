@@ -43,7 +43,7 @@ setInterval(
         for (var i = 0; i < res.length; i++) {
             if (res[i][0].unlocked) {
                 if (res[i][1].value / res[i][1].maxValue > 0.95) {
-                    gamePage.craft(res[i][2], 1);
+                    gamePage.craft(res[i][2], 2);
                 }
             }
         }
@@ -52,8 +52,10 @@ setInterval(
 
         var res2 = [
             [concrete, 'concrate'],
-            [gear, 'gear'],
+            // [gear, 'gear'],
             // [alloy, 'alloy']
+            [scaffold, 'scaffold']
+            // [thorium, 'thorium']
         ]
 
         for (var i = 0; i < res2.length; i++) {
