@@ -42,7 +42,7 @@ setInterval(
 
         for (var i = 0; i < res.length; i++) {
             if (res[i][0].unlocked) {
-                if (res[i][1].value / res[i][1].maxValue > 0.95) {
+                if (res[i][1].value / res[i][1].maxValue > 0.99) {
                     gamePage.craft(res[i][2], 500);
                 }
             }
@@ -50,19 +50,19 @@ setInterval(
 
         // [concrete, steel, 'concrate'],
 
-        var res2 = [
-            [concrete, 'concrate'],
-            // [gear, 'gear'],
-            // [alloy, 'alloy']
-            [scaffold, 'scaffold']
-            // [thorium, 'thorium']
-        ]
-
-        for (var i = 0; i < res2.length; i++) {
-            if (res2[i][0].unlocked) {
-                gamePage.craft(res2[i][1], 1);
-            }
-        }
+        // var res2 = [
+        //     [concrete, 'concrate'],
+        //     // [gear, 'gear'],
+        //     // [alloy, 'alloy']
+        //     [scaffold, 'scaffold']
+        //     // [thorium, 'thorium']
+        // ]
+        //
+        // for (var i = 0; i < res2.length; i++) {
+        //     if (res2[i][0].unlocked) {
+        //         gamePage.craft(res2[i][1], 1);
+        //     }
+        // }
 
         // if (wood.unlocked) {
         //     if (catnip.value / catnip.maxValue > 0.95) {gamePage.craft('wood', 1)}
