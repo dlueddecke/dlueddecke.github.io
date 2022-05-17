@@ -35,18 +35,37 @@ setInterval(
             [slab, minerals, 'slab'],
             [plate, iron, 'plate'],
             [steel, coal, 'steel'],
-            // [concrete, steel, 'concrate'],
-            [gear, steel, 'gear']
+            [gear, steel, 'gear'],
+            [alloy, titanium, 'alloy']
 
         ]
 
         for (var i = 0; i < res.length; i++) {
             if (res[i][0].unlocked) {
                 if (res[i][1].value / res[i][1].maxValue > 0.95) {
-                    gamePage.craft(res[i][2], 1)
+                    gamePage.craft(res[i][2], 1);
                 }
             }
         }
+
+        // [concrete, steel, 'concrate'],
+
+        var res2 = [
+            [concrete, 'concrate']
+            [gear, 'gear']
+            [alloy, 'alloy']
+        ]
+
+        for (var i = 0; i < res2.length; i++) {
+            if (res[i][0].unlocked) {
+                gamePage.craft(res2[i][1], 1);
+            }
+        }
+
+        // if (wood.unlocked) {
+        //     if (catnip.value / catnip.maxValue > 0.95) {gamePage.craft('wood', 1)}
+        // }
+
 
         // if (wood.unlocked) {
         //     if (catnip.value / catnip.maxValue > 0.95) {gamePage.craft('wood', 1)}
