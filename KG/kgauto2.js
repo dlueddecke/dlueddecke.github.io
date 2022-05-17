@@ -53,7 +53,7 @@ setInterval(
         var res2 = [
             [concrete, 'concrate'],
             [gear, 'gear'],
-            [alloy, 'alloy']
+            // [alloy, 'alloy']
         ]
 
         for (var i = 0; i < res2.length; i++) {
