@@ -1,9 +1,6 @@
 setInterval(
   function(){
 
-    // Adding a comment
-    // Adding another comment
-    
         var catnip = gamePage.resPool.get('catnip');
         var wood = gamePage.resPool.get('wood');
         var minerals = gamePage.resPool.get('minerals');
@@ -36,8 +33,8 @@ setInterval(
             if (catnip.value / catnip.maxValue > 0.95) {gamePage.craft('wood', 1)}
         }
 
-        if (wood2.unlocked && beam.unlocked) {
-            if (wood2.value / wood2.maxValue > 0.95) {gamePage.craft('beam', 1)}
+        if (wood.unlocked && beam.unlocked) {
+            if (wood.value / wood.maxValue > 0.95) {gamePage.craft('beam', 1)}
         }
 
         if(catpower.value/catpower.maxValue>0.95) {
