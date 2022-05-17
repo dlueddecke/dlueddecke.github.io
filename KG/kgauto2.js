@@ -41,6 +41,10 @@ setInterval(
             if (minerals.value / minerals.maxValue > 0.95) {gamePage.craft('slab', 1)}
         }
 
+        if (iron.unlocked && plate.unlocked) {
+            if (iron.value / iron.maxValue > 0.95) {gamePage.craft('plate', 1)}
+        }
+
         if(catpower.value/catpower.maxValue>0.95) {
             gamePage.village.huntAll();
             if(gamePage.workshop.getCraft('parchment').unlocked) {
