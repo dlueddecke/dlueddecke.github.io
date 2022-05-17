@@ -30,17 +30,17 @@ setInterval(
         var thorium = gamePage.workshop.getCraft('thorium');
 
         var resources = [
-            [wood2, catnip, 'wood'],
+            [wood, catnip, 'wood'],
             [beam, wood, 'beam'],
             [slab, minerals, 'slab'],
             [plate, iron, 'plate'],
             [steel, coal, 'steel']
         ]
 
-        for (var resource = 0; resource < resources.length; resource++) {
-            if (resource[0].unlocked) {
-                if (resource[1].value / resource[1].maxValue > 0.95) {
-                    gamePage.craft(resource[2], 1)
+        for (var res = 0; res < resources.length; res++) {
+            if (res[0].unlocked) {
+                if (res[1].value / res[1].maxValue > 0.95) {
+                    gamePage.craft(res[2], 1)
                 }
             }
         }
