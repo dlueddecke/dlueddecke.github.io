@@ -62,8 +62,10 @@ setInterval(
         ]
 
         for (var i = 0; i < res2.length; i++) {
-            if (res2[i][0].unlocked && res2[i][1].value < res2[i][0].value) {
-                gamePage.craft(res2[i][2], 1);
+            if (res2[i][0].unlocked) {
+                if (res2[i][1].value < res2[i][0].value) {
+                    gamePage.craft(res2[i][2], 1);
+                }
             }
         }
 
