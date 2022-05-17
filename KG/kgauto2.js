@@ -18,7 +18,7 @@ setInterval(
         var faith = gamePage.resPool.get('faith');
         var starchart = gamePage.resPool.get('starchart');
 
-        var wood2 = gamePage.workshop.getCraft('wood');
+        // var wood2 = gamePage.workshop.getCraft('wood');
         var beam = gamePage.workshop.getCraft('beam');
         var slab = gamePage.workshop.getCraft('slab');
         var plate = gamePage.workshop.getCraft('plate');
@@ -30,7 +30,7 @@ setInterval(
         var thorium = gamePage.workshop.getCraft('thorium');
 
         var res = [
-            [wood2, catnip, 'wood'],
+            [wood, catnip, 'wood'],
             [beam, wood, 'beam'],
             [slab, minerals, 'slab'],
             [plate, iron, 'plate'],
