@@ -34,7 +34,10 @@ setInterval(
             [beam, wood, 'beam'],
             [slab, minerals, 'slab'],
             [plate, iron, 'plate'],
-            [steel, coal, 'steel']
+            [steel, coal, 'steel'],
+            // [concrete, steel, 'concrate'],
+            [gear, steel, 'gear']
+
         ]
 
         for (var i = 0; i < res.length; i++) {
