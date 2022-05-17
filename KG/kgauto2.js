@@ -29,21 +29,42 @@ setInterval(
         var scaffold = gamePage.workshop.getCraft('scaffold');
         var thorium = gamePage.workshop.getCraft('thorium');
 
-        if (catnip.unlocked && wood.unlocked) {
-            if (catnip.value / catnip.maxValue > 0.95) {gamePage.craft('wood', 1)}
+        var resources = [
+            [wood2, catnip, 'wood'],
+            [beam, wood, 'beam'],
+            [slab, minerals, 'slab'],
+            [plate, iron, 'plate'],
+            [steel, coal, 'steel']
+        ]
+
+        for (var resource = 0; resource < resources.length; resource++) {
+            if (resource[0].unlocked) {
+                if (resource[1].value / resource[1].maxValue > 0.95) {
+                    gamePage.craft(resource[2], 1)
+                }
+            }
         }
 
-        if (wood.unlocked && beam.unlocked) {
-            if (wood.value / wood.maxValue > 0.95) {gamePage.craft('beam', 1)}
-        }
+        // if (wood.unlocked) {
+        //     if (catnip.value / catnip.maxValue > 0.95) {gamePage.craft('wood', 1)}
+        // }
+        //
+        // if (beam.unlocked) {
+        //     if (wood.value / wood.maxValue > 0.95) {gamePage.craft('beam', 1)}
+        // }
+        //
+        // if (slab.unlocked) {
+        //     if (minerals.value / minerals.maxValue > 0.95) {gamePage.craft('slab', 1)}
+        // }
+        //
+        // if (plate.unlocked) {
+        //     if (iron.value / iron.maxValue > 0.95) {gamePage.craft('plate', 1)}
+        // }
+        //
+        // if (steel.unlocked) {
+        //     if (iron.value / iron.maxValue > 0.95) {gamePage.craft('plate', 1)}
+        // }
 
-        if (minerals.unlocked && slab.unlocked) {
-            if (minerals.value / minerals.maxValue > 0.95) {gamePage.craft('slab', 1)}
-        }
-
-        if (iron.unlocked && plate.unlocked) {
-            if (iron.value / iron.maxValue > 0.95) {gamePage.craft('plate', 1)}
-        }
 
         if(catpower.value/catpower.maxValue>0.95) {
             gamePage.village.huntAll();
