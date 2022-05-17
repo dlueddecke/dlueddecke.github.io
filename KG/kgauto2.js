@@ -51,8 +51,8 @@ setInterval(
         // [concrete, steel, 'concrate'],
 
         var res2 = [
-            [concrete, 'concrate']
-            [gear, 'gear']
+            [concrete, 'concrate'],
+            [gear, 'gear'],
             [alloy, 'alloy']
         ]
 
