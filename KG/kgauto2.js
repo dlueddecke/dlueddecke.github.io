@@ -43,7 +43,7 @@ setInterval(
         for (var i = 0; i < res.length; i++) {
             if (res[i][0].unlocked) {
                 if (res[i][1].value / res[i][1].maxValue > 0.99) {
-                    gamePage.craft(res[i][2], 500);
+                    gamePage.craft(res[i][2], 1);
                 }
             }
         }
