@@ -90,7 +90,7 @@ setInterval(
         // }
 
 
-        if(catpower.value/catpower.maxValue>0.95) {
+        if (catpower.value/catpower.maxValue>0.95) {
             gamePage.village.huntAll();
             if(gamePage.workshop.getCraft('parchment').unlocked) {
                 gamePage.craftAll('parchment');
@@ -106,6 +106,12 @@ setInterval(
             }
             if(gamePage.workshop.getCraft('steel').unlocked) {
                 gamePage.craft('steel', 1);
+            }
+        }
+
+        if (culture.value / culture.maxValue > 0.99) {
+            if(gamePage.workshop.getCraft('manuscript').unlocked) {
+                gamePage.craft('manuscript', 1);
             }
         }
 
