@@ -2,6 +2,7 @@ setInterval(
   function(){
 
       // Adding a comment
+      // Adding another comment
     
 		var catnip = gamePage.resPool.get('catnip');
 		var wood = gamePage.resPool.get('wood');
