@@ -37,6 +37,10 @@ setInterval(
             if (wood.value / wood.maxValue > 0.95) {gamePage.craft('beam', 1)}
         }
 
+        if (minerals.unlocked && slab.unlocked) {
+            if (minerals.value / minerals.maxValue > 0.95) {gamePage.craft('slab', 1)}
+        }
+
         if(catpower.value/catpower.maxValue>0.95) {
             gamePage.village.huntAll();
             if(gamePage.workshop.getCraft('parchment').unlocked) {
