@@ -52,7 +52,6 @@ setInterval(
             [beamC, wood, beam, 'beam'],
             [slabC, minerals, slab, 'slab'],
             [plateC, iron, plate, 'plate'],
-            // [alloy, titanium, 'alloy']
         ]
 
         for (var i = 0; i < res1.length; i++) {
@@ -80,21 +79,32 @@ setInterval(
                 }
             }
         }
-
         var res3 = [
-            [steelC, coal, iron, steel, 'steel']
+            [steelC, coal, iron, steel, 'steel'],
             [alloyC, titanium, steel, alloy, 'alloy']
         ]
 
         for (var i = 0; i < res3.length; i++) {
-            if (res3[i][0].unlocked) {
+            if (res3[i][0].unlocked) { // <<-
                 if(res3[i][1].value > res3[i][3].value && res3[i][2].value > res[i][3].value) {
                     gamePage.craft(res3[i][4], 1);
                 }
             }
         }
+        // console.log(gamePage.resPool.get('alloy').value)
+        // console.log(gamePage.workshop.getCraft('alloy').value)
+        // console.log(gamePage.resPool.get('alloy').unlocked)
+        // console.log(gamePage.workshop.getCraft('alloy').unlocked)
+
+// [gamePage.resPool.get('alloy').value,
+// gamePage.workshop.getCraft('alloy').value,
+// gamePage.resPool.get('alloy').unlocked,
+// gamePage.workshop.getCraft('alloy').unlocked]
+// gamePage.craft('steel', 1);
+// gamePage.craft('alloy', 1);
 
         // // var gear = gamePage.workshop.getCraft('gear');
+
         // var gear1 = gamePage.resPool.get('gear');
         // console.log(['gear value', gear.unlocked, gear1.value]);
         //
