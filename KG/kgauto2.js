@@ -22,7 +22,7 @@ setInterval(
         var slab = gamePage.resPool.get('slab');
         var plate = gamePage.resPool.get('plate');
         var steel = gamePage.resPool.get('steel');
-        // var concrete = gamePage.res.get('concrate');
+        // var concrete = gamePage.resPool.get('concrate');
         var gear = gamePage.resPool.get('gear');
         var alloy = gamePage.resPool.get('alloy');
         var scaffold = gamePage.resPool.get('scaffold');
