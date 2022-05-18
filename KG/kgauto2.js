@@ -95,8 +95,8 @@ setInterval(
 
         // Tier 2B Crafting
         var res2b = [
-            [compendiumC, manuscript, compendium, 'compedium'],
             [blueprintC, compendium, blueprint, 'blueprint']
+            [compendiumC, manuscript, compendium, 'compedium'],
         ]
 
         for (var k = 0; k < res2b.length; k++) {
