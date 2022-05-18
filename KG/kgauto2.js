@@ -95,7 +95,7 @@ setInterval(
 
         // Tier 2B Crafting
         var res2b = [
-            [blueprintC, compendium, blueprint, 'blueprint']
+            [blueprintC, compendium, blueprint, 'blueprint'],
             [compendiumC, manuscript, compendium, 'compedium'],
         ]
 
