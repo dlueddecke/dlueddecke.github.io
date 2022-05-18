@@ -81,7 +81,7 @@ setInterval(
 
         for (var j = 0; j < res2a.length; j++) {
             if (res2a[j][0].unlocked) {
-                if (res2a[j][1].value > 2 * res2a[j][2].value) {
+                if (res2a[j][1].value > 4 * res2a[j][2].value) {
                     gamePage.craft(res2a[j][3], 1);
                 }
             }
@@ -108,18 +108,30 @@ setInterval(
         }
 
         // Tier 3 Crafting
-        var res3 = [
-            [steelC, coal, iron, steel, 'steel'],
-            [alloyC, titanium, steel, alloy, 'alloy']
-        ]
+        // var res3 = [
+        //     [steelC, coal, iron, steel, 'steel'],
+        //     [alloyC, titanium, steel, alloy, 'alloy']
+        // ]
 
-        for (var m = 0; m < res3.length; m++) {
-            if (res3[m][0].unlocked) {
-                if(res3[m][1].value > 2 * res3[m][3].value && res3[m][2].value > 2 * res3[m][3].value) {
-                    gamePage.craft(res3[m][4], 1);
-                }
+        if (steelC.unlocked) {
+            if (coal.value / coal.maxValue > 0.99 && iron.value / iron.maxValue > 0.99) {
+                gamePage.craft('steel', 1);
             }
         }
+
+        if (alloyC.unlocked) {
+            if (titanium.value / titanium.maxValue > 0.99 && steel.value > 2 * alloy.value) {
+                gamePage.craft('alloy, 1');
+            }
+        }
+
+        // for (var m = 0; m < res3.length; m++) {
+        //     if (res3[m][0].unlocked) {
+        //         if(res3[m][1].value > 2 * res3[m][3].value && res3[m][2].value > 2 * res3[m][3].value) {
+        //             gamePage.craft(res3[m][4], 1);
+        //         }
+        //     }
+        // }
 
         // autoPray
         if (gamePage.resPool.get("faith").value >= gamePage.resPool.get("faith").maxValue*0.99){
