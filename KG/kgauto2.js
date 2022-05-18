@@ -205,7 +205,7 @@ setInterval(
                 }
         }
 
-        autoAssign();
+        // autoAssign();
 
     game.tick();
 
