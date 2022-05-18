@@ -73,7 +73,7 @@ setInterval(
 
         // Tier 2A Crafting
         var res2a = [
-            [concreteC, slab, steel, 'concrate'],
+            // [concreteC, slab, steel, 'concrate'],
             [gearC, steel, gear, 'gear'],
             [scaffoldC, beam, scaffold, 'scaffold'],
             // [thorium, 'thorium']
@@ -95,8 +95,8 @@ setInterval(
 
         // Tier 2B Crafting
         var res2b = [
-            [blueprintC, compendium, blueprint, 'blueprint'],
             [compendiumC, manuscript, compendium, 'compedium'],
+            [blueprintC, compendium, blueprint, 'blueprint'],
         ]
 
         for (var k = 0; k < res2b.length; k++) {
@@ -119,9 +119,15 @@ setInterval(
             }
         }
 
+        if (concreteC.unlocked) {
+            if (slab.value > 4 * concrete.value && steel.value > 4 * concrete.value) {
+                gamePage.craft('concrate', 1)
+            }
+        }
+
         if (alloyC.unlocked) {
-            if (titanium.value / titanium.maxValue > 0.99 && steel.value > 2 * alloy.value) {
-                gamePage.craft('alloy, 1');
+            if (titanium.value / titanium.maxValue > 0.99 && steel.value > 4 * alloy.value) {
+                gamePage.craft('alloy', 1);
             }
         }
 
