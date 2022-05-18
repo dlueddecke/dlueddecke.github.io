@@ -22,7 +22,7 @@ setInterval(
         var slab = gamePage.resPool.get('slab');
         var plate = gamePage.resPool.get('plate');
         var steel = gamePage.resPool.get('steel');
-        // var concrete = gamePage.resPool.get('concrate');
+        var concrete = gamePage.resPool.get('concrate');
         var gear = gamePage.resPool.get('gear');
         var alloy = gamePage.resPool.get('alloy');
         var scaffold = gamePage.resPool.get('scaffold');
@@ -37,7 +37,7 @@ setInterval(
         var slabC = gamePage.workshop.getCraft('slab');
         var plateC = gamePage.workshop.getCraft('plate');
         var steelC = gamePage.workshop.getCraft('steel');
-        // var concreteC = gamePage.workshop.getCraft('concrate');
+        var concreteC = gamePage.workshop.getCraft('concrate');
         var gearC = gamePage.workshop.getCraft('gear');
         var alloyC = gamePage.workshop.getCraft('alloy');
         var scaffoldC = gamePage.workshop.getCraft('scaffold');
@@ -73,9 +73,9 @@ setInterval(
 
         // Tier 2A Crafting
         var res2a = [
+            [concreteC, slab, steel, 'concrate'],
             [gearC, steel, gear, 'gear'],
             [scaffoldC, beam, scaffold, 'scaffold'],
-            // [concrete, steel, 'concrate'],
             // [thorium, 'thorium']
         ]
 
