@@ -81,14 +81,14 @@ setInterval(
 
         for (var j = 0; j < res2a.length; j++) {
             if (res2a[j][0].unlocked) {
-                if (res2a[j][1].value > res2a[j][2].value) {
+                if (res2a[j][1].value > 2 * res2a[j][2].value) {
                     gamePage.craft(res2a[j][3], 1);
                 }
             }
         }
 
         if (culture.value / culture.maxValue > 0.99) {
-            if(manuscriptC.unlocked && manuscript.value < parchment.value) {
+            if(manuscriptC.unlocked && parchment.value > 2 * manuscript.value) {
                 gamePage.craft('manuscript', 1);
             }
         }
@@ -101,7 +101,7 @@ setInterval(
 
         for (var k = 0; k < res2b.length; k++) {
             if (res2b[k][0].unlocked) {
-                if (res2b[k][1].value > res2b[k][2].value && science.value / science.maxValue > 0.99) {
+                if (res2b[k][1].value > 2 * res2b[k][2].value && science.value / science.maxValue > 0.99) {
                     gamePage.craft(res2b[k][3], 1);
                 }
             }
@@ -115,7 +115,7 @@ setInterval(
 
         for (var m = 0; m < res3.length; m++) {
             if (res3[m][0].unlocked) {
-                if(res3[m][1].value > res3[m][3].value && res3[m][2].value > res3[m][3].value) {
+                if(res3[m][1].value > 2 * res3[m][3].value && res3[m][2].value > 2 * res3[m][3].value) {
                     gamePage.craft(res3[m][4], 1);
                 }
             }
