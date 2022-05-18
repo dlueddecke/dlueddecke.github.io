@@ -47,6 +47,7 @@ setInterval(
         var compendiumC = gamePage.workshop.getCraft('compedium');
         var blueprintC = gamePage.workshop.getCraft('blueprint');
 
+        // Tier 1 Crafting
         var res1 = [
             [woodC, catnip, wood, 'wood'],
             [beamC, wood, beam, 'beam'],
@@ -62,62 +63,27 @@ setInterval(
             }
         }
 
-        var res2 = [
-            [gearC, steel, gear, 'gear'],
-            [scaffoldC, beam, scaffold, 'scaffold'],
-            [compendiumC, manuscript, compendium, 'compedium'],
-            [blueprintC, compendium, blueprint, 'blueprint']
-
-            // [concrete, steel, 'concrate'],
-            // [thorium, 'thorium']
-        ]
-
-        for (var i = 0; i < res2.length; i++) {
-            if (res2[i][0].unlocked) {
-                if (res2[i][1].value > res2[i][2].value && science.value / science.maxValue > 0.99) {
-                    gamePage.craft(res2[i][3], 1);
-                }
-            }
-        }
-        var res3 = [
-            [steelC, coal, iron, steel, 'steel'],
-            [alloyC, titanium, steel, alloy, 'alloy']
-        ]
-
-        for (var i = 0; i < res3.length; i++) {
-            if (res3[i][0].unlocked) { // <<-
-                if(res3[i][1].value > res3[i][3].value && res3[i][2].value > res3[i][3].value) {
-                    gamePage.craft(res3[i][4], 1);
-                }
-            }
-        }
-        // console.log(gamePage.resPool.get('alloy').value)
-        // console.log(gamePage.workshop.getCraft('alloy').value)
-        // console.log(gamePage.resPool.get('alloy').unlocked)
-        // console.log(gamePage.workshop.getCraft('alloy').unlocked)
-
-// [gamePage.resPool.get('alloy').value,
-// gamePage.workshop.getCraft('alloy').value,
-// gamePage.resPool.get('alloy').unlocked,
-// gamePage.workshop.getCraft('alloy').unlocked]
-// gamePage.craft('steel', 1);
-// gamePage.craft('alloy', 1);
-
-        // // var gear = gamePage.workshop.getCraft('gear');
-
-        // var gear1 = gamePage.resPool.get('gear');
-        // console.log(['gear value', gear.unlocked, gear1.value]);
-        //
-        // var alloy1 = gamePage.resPool.get('alloy');
-        // var alloy = gamePage.workshop.getCraft('alloy');
-        // console.log(['alloy value', alloy.unlocked, alloy1.value]);
-        //
-        // console.log(['scaffold value', scaffold.unlocked, scaffold.value]);
-
+        // autoHunt and craft all parchment
         if (catpower.value / catpower.maxValue > 0.99) {
             gamePage.village.huntAll();
             if(parchmentC.unlocked) {
                 gamePage.craftAll('parchment');
+            }
+        }
+
+        // Tier 2A Crafting
+        var res2a = [
+            [gearC, steel, gear, 'gear'],
+            [scaffoldC, beam, scaffold, 'scaffold'],
+            // [concrete, steel, 'concrate'],
+            // [thorium, 'thorium']
+        ]
+
+        for (var j = 0; j < res2a.length; j++) {
+            if (res2a[j][0].unlocked) {
+                if (res2a[j][1].value > res2a[j][2].value) {
+                    gamePage.craft(res2a[j][3], 1);
+                }
             }
         }
 
@@ -127,6 +93,120 @@ setInterval(
             }
         }
 
-    game.tick()
+        // Tier 2B Crafting
+        var res2b = [
+            [compendiumC, manuscript, compendium, 'compedium'],
+            [blueprintC, compendium, blueprint, 'blueprint']
+        ]
+
+        for (var k = 0; k < res2b.length; k++) {
+            if (res2b[k][0].unlocked) {
+                if (res2b[k][1].value > res2b[k][2].value && science.value / science.maxValue > 0.99) {
+                    gamePage.craft(res2b[k][3], 1);
+                }
+            }
+        }
+
+        // Tier 3 Crafting
+        var res3 = [
+            [steelC, coal, iron, steel, 'steel'],
+            [alloyC, titanium, steel, alloy, 'alloy']
+        ]
+
+        for (var m = 0; m < res3.length; m++) {
+            if (res3[m][0].unlocked) {
+                if(res3[m][1].value > res3[m][3].value && res3[m][2].value > res3[m][3].value) {
+                    gamePage.craft(res3[m][4], 1);
+                }
+            }
+        }
+
+        // autoPray
+        if (gamePage.resPool.get("faith").value >= gamePage.resPool.get("faith").maxValue*0.99){
+            gamePage.religion.praise();
+        }
+
+        // Auto assign new kittens to selected job
+        function autoAssign() {
+                var resourcesAssign = {
+                    "catnip": ["catnip", "farmer", gamePage.resPool.get("catnip").value < gamePage.resPool.get("catnip").maxValue * 0.1 ? 9 : 999, (gamePage.resPool.get('paragon').value < 200 && gamePage.bld.getBuildingExt('temple').meta.val < 1) ? 0.1 : 1],
+                    "wood, beam": ["wood","woodcutter",(gamePage.resPool.get("beam").value < gamePage.resPool.get("slab").value && gamePage.resPool.get("beam").value < gamePage.resPool.get("wood").value) ? gamePage.resPool.get("wood").value/gamePage.resPool.get("wood").maxValue : gamePage.resPool.get("beam").value > gamePage.resPool.get("wood").maxValue ? gamePage.resPool.get("beam").value/gamePage.resPool.get("wood").maxValue / ((gamePage.resPool.get("wood").maxValue / ((gamePage.getResourcePerTick("wood", 0) * 5) / gamePage.village.getJob('woodcutter').value)) / gamePage.village.getJob('woodcutter').value / gamePage.village.getJob('woodcutter').value)  : 1 , 2],
+                    "minerals, slab": ["minerals","miner",(gamePage.resPool.get("slab").value < gamePage.resPool.get("beam").value && gamePage.resPool.get("slab").value < gamePage.resPool.get("minerals").value) ? gamePage.resPool.get("minerals").value/gamePage.resPool.get("minerals").maxValue :  gamePage.resPool.get("slab").value > gamePage.resPool.get("minerals").maxValue ? gamePage.resPool.get("slab").value/gamePage.resPool.get("minerals").maxValue / ((gamePage.resPool.get("minerals").maxValue / ((gamePage.getResourcePerTick("minerals", 0) * 5) / gamePage.village.getJob('miner').value)) / gamePage.village.getJob('miner').value / gamePage.village.getJob('miner').value) : 1 ,2],
+                    "science": ["science", "scholar",(gamePage.resPool.get("science").value < gamePage.resPool.get("science").maxValue * 0.5) ? 0.5 : 1, gamePage.science.get('agriculture').researched  ? 1 : 0.1],
+                    "manpower, parchment": ["manpower", "hunter", 0.1 , (gamePage.workshopTab.visible && gamePage.resPool.get("parchment").value == 0) ? 0.1 : 1],
+                    "faith": ["faith", "priest", gamePage.tabs[5].rUpgradeButtons.filter(res => res.model.resourceIsLimited == false && (!(res.model.name.includes('(complete)'))) && (!(res.model.name.includes('(Transcend)')))).length  == 0 ?  (gamePage.religion.getSolarRevolutionRatio() <= Math.max(gamePage.religion.transcendenceTier * 0.05, gamePage.getEffect("solarRevolutionLimit")) ? 0.1 : 2) :  (gamePage.religion.getSolarRevolutionRatio() <= Math.max(gamePage.religion.transcendenceTier * 0.05, gamePage.getEffect("solarRevolutionLimit")) ? 1 : gamePage.resPool.get("faith").value/gamePage.resPool.get("faith").maxValue * 10 + 1 ) , (gamePage.resPool.get("faith").value < 750 && gamePage.resPool.get("gold").maxValue >= 500 ) ? 0.01 : 5],
+                    "coal, gold": (gamePage.resPool.get("coal").value / gamePage.resPool.get("coal").maxValue  || 100) < (gamePage.workshop.get("geodesy").researched ? gamePage.resPool.get("gold").value / gamePage.resPool.get("gold").maxValue : 100) ? ["coal", "geologist",gamePage.resPool.get("coal").value < gamePage.resPool.get("coal").maxValue * 0.99 ? 1 : 15,15] : ["gold", "geologist",gamePage.resPool.get("gold").value < gamePage.resPool.get("gold").maxValue * 0.99 ? 1 : 15,15]
+                        };
+
+                if(Object.keys(craftPriority[0]).length > 0){
+                    let tstres = ["wood", "minerals", "beam", "slab", "science", "faith", "gold", "coal", "manpower", "parchment"].filter(x => gamePage.bld.getPrices(craftPriority[0]).map(elem => elem.name).includes(x))
+                    if (tstres.length > 0) {
+                        tstres.forEach(function(entry) {
+                            if (gamePage.resPool.get(entry).value < gamePage.bld.getPrices(craftPriority[0]).filter(el => el.name == entry)[0].val) {
+                                 res_elem = Object.entries(resourcesAssign).map(([k,v]) => k).filter( k => k.indexOf(entry) > -1)[0];
+                                 resourcesAssign[res_elem][2] = 0.1;
+                                 resourcesAssign[res_elem][3] = 0.1;
+                            }
+                        });
+                    }
+                }
+
+                resourcesAssign = Object.entries(resourcesAssign).map(([k,v]) => v);
+                let restmp = resourcesAssign.filter(res => res[0] in gamePage.village.getJob(res[1]).modifiers &&  gamePage.village.getJob(res[1]).unlocked && ( !gamePage.challenges.isActive("atheism") || res[0] != 'faith'));
+                restmpq = restmp.sort(function(a, b) {
+                        if (gamePage.resPool.get(a[0]).value >= gamePage.resPool.get(a[0]).maxValue){
+                            atick = gamePage.resPool.get(a[0]).maxValue * 10;
+                            ajobs = (gamePage.religion.getRU('solarRevolution').val == 1 || gamePage.challenges.isActive("atheism")) ? a[2] : a[3];
+                        }
+                        else{
+                            atick = gamePage.calcResourcePerTick(a[0]);
+                            ajobs = gamePage.village.getJob(a[1]).value;
+                        }
+                        if (gamePage.resPool.get(b[0]).value >= gamePage.resPool.get(b[0]).maxValue){
+                            btick = gamePage.resPool.get(b[0]).maxValue * 10;
+                            bjobs = (gamePage.religion.getRU('solarRevolution').val == 1 || gamePage.challenges.isActive("atheism")) ? b[2] : b[3];
+                        }
+                        else{
+                            btick = gamePage.calcResourcePerTick(b[0]);
+                            bjobs = gamePage.village.getJob(b[1]).value;
+                        }
+                        kfa = (gamePage.religion.getRU('solarRevolution').val == 1 || gamePage.challenges.isActive("atheism")) ? a[2] : a[3];
+                        kfb = (gamePage.religion.getRU('solarRevolution').val == 1 || gamePage.challenges.isActive("atheism")) ? b[2] : b[3];
+                        return (((atick / gamePage.resPool.get(a[0]).maxValue) * (gamePage.resPool.get(a[0]).value / gamePage.resPool.get(a[0]).maxValue) * (kfa * ajobs) ) * kfa - ((btick / gamePage.resPool.get(b[0]).maxValue) * (gamePage.resPool.get(b[0]).value / gamePage.resPool.get(b[0]).maxValue) * (kfb * bjobs)) * kfb);
+
+                });
+
+                if (game.village.getFreeKittens() != 0 ) {
+                    gamePage.village.assignJob(gamePage.village.getJob(restmpq[0][1]),1);
+                }
+                else if (gamePage.village.getKittens() > 0) {
+                    restmpdel = restmpq.filter(res => gamePage.village.getJob(res[1]).value > (gamePage.village.getKittens() > 10 ? 1 : 0));
+                    if (restmpdel.length > 0){
+                        let cnt = gamePage.resPool.get(restmpdel[restmpdel.length - 1][0]).value >= gamePage.resPool.get(restmpdel[restmpdel.length - 1][0]).maxValue ? gamePage.village.getJob(restmpdel[restmpdel.length - 1][1]).value -1 : Math.max(Math.floor(gamePage.village.getJob(restmpdel[restmpdel.length - 1][1]).value * 0.1),1)
+                        if (cnt > 0) {
+                            gamePage.village.sim.removeJob(restmpdel[restmpdel.length - 1][1],cnt);
+                            gamePage.village.assignJob(gamePage.village.getJob(restmpq[0][1]),cnt);
+                        }
+
+                    }
+                }
+                if (gamePage.science.get('civil').researched && !gamePage.ironWill && gamePage.resPool.get("gold").value > 600){
+                    if (IincKAssign > 100) {
+                          let prkitten = gamePage.village.sim.kittens.filter(kitten => kitten.job == restmpq[0][1]).sort(function(a, b) {return  b.skills[restmpq[0][1]] - a.skills[restmpq[0][1]];})[0]
+                          if (prkitten){
+                              gamePage.villageTab.censusPanel.census.makeLeader(prkitten);
+                              if (gamePage.village.sim.expToPromote(prkitten.rank, prkitten.rank+1, prkitten.exp)[0] && gamePage.village.sim.goldToPromote(prkitten.rank, prkitten.rank+1, gamePage.resPool.get("gold").value)[1] < gamePage.resPool.get("gold").value * 0.3) {
+                                 gamePage.village.sim.promote(prkitten);
+                              }
+                          }
+                          IincKAssign = 0;
+                    }
+                    IincKAssign++;
+                }
+        }
+
+        autoAssign();
+
+    game.tick();
 
     },5)
