@@ -47,7 +47,7 @@ setInterval(
         var compendiumC = gamePage.workshop.getCraft('compedium');
         var blueprintC = gamePage.workshop.getCraft('blueprint');
 
-        // Tier 1 Crafting
+        // Base Crafting
         var res1 = [
             [woodC, catnip, wood, 'wood'],
             [beamC, wood, beam, 'beam'],
@@ -91,13 +91,13 @@ setInterval(
             }
         }
 
-        // Tier 3 Crafting
+        // Steel Chain Crafting
 
         if (steelC.unlocked) {
             if (coal.value / coal.maxValue > 0.90 && iron.value / iron.maxValue > 0.90) {
                 gamePage.craft('steel', 1);
                 if (concreteC.unlocked) {
-                    if (slab.value > 4 * concrete.value && steel.value > 4 * concrete.value) {
+                    if (slab.value > 10 * concrete.value && steel.value > 10 * concrete.value) {
                         gamePage.craft('concrate', 1);
                     }
                 }
