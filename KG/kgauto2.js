@@ -57,7 +57,7 @@ setInterval(
 
         for (var i = 0; i < res1.length; i++) {
             if (res1[i][0].unlocked) {
-                if (res1[i][1].value / res1[i][1].maxValue > 0.99) {
+                if (res1[i][1].value / res1[i][1].maxValue > 0.94) {
                     gamePage.craft(res1[i][3], 1);
                 }
             }
