@@ -72,20 +72,20 @@ setInterval(
         }
 
         // Tier 2A Crafting
-        var res2a = [
+        // var res2a = [
             // [concreteC, slab, steel, 'concrate'],
-            [gearC, steel, gear, 'gear'],
-            [scaffoldC, beam, scaffold, 'scaffold'],
+            // [gearC, steel, gear, 'gear'],
+            // [scaffoldC, beam, scaffold, 'scaffold'],
             // [thorium, 'thorium']
-        ]
+        // ]
 
-        for (var j = 0; j < res2a.length; j++) {
-            if (res2a[j][0].unlocked) {
-                if (res2a[j][1].value > 4 * res2a[j][2].value) {
-                    gamePage.craft(res2a[j][3], 1);
-                }
-            }
-        }
+        // for (var j = 0; j < res2a.length; j++) {
+        //     if (res2a[j][0].unlocked) {
+        //         if (res2a[j][1].value > 4 * res2a[j][2].value) {
+        //             gamePage.craft(res2a[j][3], 1);
+        //         }
+        //     }
+        // }
 
         if (culture.value / culture.maxValue > 0.99) {
             if(manuscriptC.unlocked && parchment.value > 2 * manuscript.value) {
@@ -96,7 +96,7 @@ setInterval(
         // Tier 2B Crafting
         var res2b = [
             [compendiumC, manuscript, compendium, 'compedium'],
-            [blueprintC, compendium, blueprint, 'blueprint'],
+            // [blueprintC, compendium, blueprint, 'blueprint'],
         ]
 
         for (var k = 0; k < res2b.length; k++) {
@@ -119,17 +119,17 @@ setInterval(
             }
         }
 
-        if (concreteC.unlocked) {
-            if (slab.value > 4 * concrete.value && steel.value > 4 * concrete.value) {
-                gamePage.craft('concrate', 1)
-            }
-        }
-
-        if (alloyC.unlocked) {
-            if (titanium.value / titanium.maxValue > 0.99 && steel.value > 4 * alloy.value) {
-                gamePage.craft('alloy', 1);
-            }
-        }
+        // if (concreteC.unlocked) {
+        //     if (slab.value > 4 * concrete.value && steel.value > 4 * concrete.value) {
+        //         gamePage.craft('concrate', 1)
+        //     }
+        // }
+        //
+        // if (alloyC.unlocked) {
+        //     if (titanium.value / titanium.maxValue > 0.99 && steel.value > 4 * alloy.value) {
+        //         gamePage.craft('alloy', 1);
+        //     }
+        // }
 
         // for (var m = 0; m < res3.length; m++) {
         //     if (res3[m][0].unlocked) {
