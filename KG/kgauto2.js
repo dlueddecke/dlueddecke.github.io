@@ -114,7 +114,7 @@ setInterval(
         // ]
 
         if (steelC.unlocked) {
-            if (coal.value / coal.maxValue > 0.99 && iron.value / iron.maxValue > 0.99) {
+            if (coal.value / coal.maxValue > 0.95 && iron.value / iron.maxValue > 0.95) {
                 gamePage.craft('steel', 1);
             }
         }
