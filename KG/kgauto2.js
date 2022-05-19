@@ -7,7 +7,7 @@ setInterval(
         var coal = gamePage.resPool.get('coal');
         var iron = gamePage.resPool.get('iron');
         var titanium = gamePage.resPool.get('titanium');
-        // var gold = gamePage.resPool.get('gold');
+        var gold = gamePage.resPool.get('gold');
         // var oil = gamePage.resPool.get('oil');
         // var uranium = gamePage.resPool.get('uranium');
         // var unobtainium = gamePage.resPool.get('unobtainium');
@@ -114,7 +114,7 @@ setInterval(
         // ]
 
         if (steelC.unlocked) {
-            if (coal.value / coal.maxValue > 0.95 && iron.value / iron.maxValue > 0.95) {
+            if (coal.value / coal.maxValue > 0.90 && iron.value / iron.maxValue > 0.90) {
                 gamePage.craft('steel', 1);
             }
         }
@@ -224,6 +224,13 @@ setInterval(
         }
 
         // autoAssign();
+
+      if (gold.unlocked) {
+          if (gold.value / gold.maxValue > 0.99) {
+              // Auto Promote
+              // Auto Manage
+          }
+      }
 
     game.tick();
 
