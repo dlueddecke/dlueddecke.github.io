@@ -76,14 +76,17 @@ setInterval(
                 if (culture.value / culture.maxValue > 0.99) {
                     if (manuscriptC.unlocked && parchment.value > 2 * manuscript.value) {
                         gamePage.craft('manuscript', 1);
-                        if (compendiumC.unlocked) {
+                        if (compendiumC.unlocked && !blueprintC.unlocked) {
                             if (manuscript.value > 2 * compendium.value && science.value / science.maxValue > 0.99) {
                                 gamePage.craft('compedium', 1);
-                                if (blueprintC.unlocked) {
-                                    if (compendium.value > 4 * blueprint.value && science.value / science.maxValue > 0.94) {
-                                        gamePage.craft('blueprint', 1);
-                                    }
-                                }
+                            }
+                        }
+                        if (compendiumC.unlocked && blueprintC.unlocked) {
+                            if (manuscript.value > 2 * compendium.value && science.value / science.maxValue > 0.99) {
+                                gamePage.craft('compedium', 1);
+                            }
+                            if (compendium.value > 4 * blueprint.value && science.value / science.maxValue > 0.99) {
+                                gamePage.craft('blueprint', 1);
                             }
                         }
                     }
@@ -92,7 +95,6 @@ setInterval(
         }
 
         // Steel Chain Crafting
-
         if (steelC.unlocked) {
             if (coal.value / coal.maxValue > 0.90 && iron.value / iron.maxValue > 0.90) {
                 gamePage.craft('steel', 1);
