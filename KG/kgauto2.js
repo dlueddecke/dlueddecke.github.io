@@ -75,17 +75,21 @@ setInterval(
                 gamePage.craftAll('parchment');
                 if (culture.value / culture.maxValue > 0.99) {
                     if (manuscriptC.unlocked && parchment.value > 2 * manuscript.value) {
-                        gamePage.craft('manuscript', 1);
+                        gamePage.craftAll('manuscript');
+                        // gamePage.craft('manuscript', 1);
                         if (compendiumC.unlocked && !blueprintC.unlocked) {
                             if (manuscript.value > 2 * compendium.value && science.value / science.maxValue > 0.99) {
-                                gamePage.craft('compedium', 1);
+                                // gamePage.craft('compedium', 1);
+                                gamePage.craftAll('compedium');
                             }
                         }
                         if (compendiumC.unlocked && blueprintC.unlocked && science.value / science.maxValue > 0.99) {
                             if (manuscript.value > 2 * compendium.value) {
-                                gamePage.craft('compedium', 1);
+                                // gamePage.craft('compedium', 1);
+                                gamePage.craftAll('compedium');
                                 if (compendium.value > 2 * blueprint.value) {
-                                    gamePage.craft('blueprint', 1);
+                                    // gamePage.craft('blueprint', 1);
+                                    gamePage.craftAll('blueprint');
                                 }
                             }
                         }
