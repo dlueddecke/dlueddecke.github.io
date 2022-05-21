@@ -148,12 +148,12 @@ function autoPraise(){
                 for (var rl = 0; rl < btn.length; rl++) {
                     if (btn[rl].model.enabled && btn[rl].model.visible) {
                         try {
-                            btn[rl].controller.buyItem(btn[rl].model, {}, function(result) {
-                                if (result) {
-                                    btn[rl].update();
-                                    gamePage.msg('Religion researched: ' + btn[rl].model.name);
-                                }
-                                });
+                            // btn[rl].controller.buyItem(btn[rl].model, {}, function(result) {
+                            //     if (result) {
+                            //         btn[rl].update();
+                            //         gamePage.msg('Religion researched: ' + btn[rl].model.name);
+                            //     }
+                            //     });
                         } catch(err) {
                             console.log(err);
                         }
@@ -169,7 +169,7 @@ function autoPraise(){
                     // gamePage.religion.tcratio += needNextLevel;
                     // gamePage.religion.transcendenceTier += 1;
 
-                    self.game.msg($I("religion.transcend.msg.success", [gamePage.religion.transcendenceTier]));
+                    // self.game.msg($I("religion.transcend.msg.success", [gamePage.religion.transcendenceTier]));
                 }
             }
 	    } else if ((gamePage.resPool.get("faith").value >= gamePage.resPool.get("faith").maxValue*0.99) && gamePage.tabs[5].rUpgradeButtons.filter(res => res.model.resourceIsLimited == false && (!(res.model.name.includes('(complete)')))).length > 0){
