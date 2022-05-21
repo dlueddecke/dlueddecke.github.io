@@ -85,11 +85,11 @@ setInterval(
                         }
                         if (compendiumC.unlocked && blueprintC.unlocked && science.value / science.maxValue > 0.99) {
                             if (manuscript.value > 2 * compendium.value) {
-                                // gamePage.craft('compedium', 1);
-                                gamePage.craftAll('compedium');
+                                gamePage.craft('compedium', 1);
+                                // gamePage.craftAll('compedium');
                                 if (compendium.value > 2 * blueprint.value) {
-                                    // gamePage.craft('blueprint', 1);
-                                    gamePage.craftAll('blueprint');
+                                    gamePage.craft('blueprint', 1);
+                                    // gamePage.craftAll('blueprint');
                                 }
                             }
                         }
