@@ -131,12 +131,12 @@ function autoPraise(){
 
             //reset faith with voidResonance > 0
             if (gamePage.getEffect("voidResonance") > 0 && gamePage.religion.getRU("apocripha").on  && gamePage.religion.getRU("transcendence").on && (gamePage.religion.faith / gamePage.religion.getApocryphaBonus()) >  gamePage.resPool.get("faith").maxValue * Math.min(gamePage.religion.transcendenceTier, 10, Math.max(gamePage.religion.transcendenceTier * 0.05, gamePage.getEffect("solarRevolutionLimit")))){
-                gamePage.msg('Faith Reset');
+                // gamePage.msg('Faith Reset');
                 // gamePage.religion.resetFaith(1.01, false);
             }
 
             if ( gamePage.religion.getRU("apocripha").on && gamePage.religion.getRU("transcendence").on && (gamePage.religion.faith / gamePage.religion.getApocryphaBonus()) >  gamePage.resPool.get("faith").maxValue * Math.min(gamePage.religion.transcendenceTier, 10, Math.max(gamePage.religion.transcendenceTier * 0.05, gamePage.getEffect("solarRevolutionLimit")))){
-                gamePage.msg('Faith Reset');
+                // gamePage.msg('Faith Reset');
                 // gamePage.religion.resetFaith(1.01, false);
             }
             else if (gamePage.religion.getSolarRevolutionRatio() <= Math.max(gamePage.religion.transcendenceTier * 0.05, gamePage.getEffect("solarRevolutionLimit"))){
@@ -150,7 +150,7 @@ function autoPraise(){
                 for (var rl = 0; rl < btn.length; rl++) {
                     if (btn[rl].model.enabled && btn[rl].model.visible) {
                         try {
-                            gamePage.msg('Research Religion: ' + btn[rl].model.name);
+                            // gamePage.msg('Research Religion: ' + btn[rl].model.name);
                             // btn[rl].controller.buyItem(btn[rl].model, {}, function(result) {
                             //     if (result) {
                             //         btn[rl].update();
@@ -180,7 +180,7 @@ function autoPraise(){
                 for (var rl = 0; rl < btn.length; rl++) {
                     if (btn[rl].model.enabled && btn[rl].model.visible) {
                         try {
-                            gamePage.msg('Research Religion: ' + btn[rl].model.name);
+                            // gamePage.msg('Research Religion: ' + btn[rl].model.name);
                             // btn[rl].controller.buyItem(btn[rl].model, {}, function(result) {
                             //     if (result) {
                             //         btn[rl].update();
@@ -205,7 +205,7 @@ function autoPraise(){
                 for (var cr = 0; cr < btn.length; cr++) {
                     if (btn[cr].model.enabled && btn[cr].model.visible) {
                         try {
-                            game.msg('Research Religion Cryptotheology: ' + btn[cr].model.name);
+                            // game.msg('Research Religion Cryptotheology: ' + btn[cr].model.name);
                             // btn[cr].controller.buyItem(btn[cr].model, {}, function(result) {
                             //     if (result) {
                             //         btn[cr].update();
@@ -233,7 +233,7 @@ function autoBuild() {
                      if ((goldebBuildings.includes(btn[bl].model.metadata.name) && !gamePage.ironWill) || (gamePage.ironWill && gamePage.bld.getBuildingExt('mint').meta.val > 3 && goldebBuildings.includes(btn[bl].model.metadata.name))){
                            if ((gamePage.religion.getRU('solarRevolution').val == 1) || (btn[bl].model.metadata.name == 'temple' &&  btn[bl].model.metadata.val < 3) || (btn[bl].model.prices.filter(res => res.name == 'gold')[0].val < (gamePage.resPool.get('gold').value - 500)) || (gamePage.resPool.get('gold').value == gamePage.resPool.get('gold').maxValue) ) {
                                       try {
-                                          gamePage.msg('Build: ' + btn[bl].model.name );
+                                          // gamePage.msg('Build: ' + btn[bl].model.name );
                                             // btn[bl].controller.buyItem(btn[bl].model, {}, function(result) {
                                             // if (result) {
                                             //     btn[bl].update();
@@ -249,7 +249,7 @@ function autoBuild() {
                      else if (btn[bl].model.metadata.name == "aiCore"){
                          if ( btn[bl].model.metadata.val < Math.floor(spcEntangler.val*2.5)){
                             try {
-                                gamePage.msg('Build: ' + btn[bl].model.name );
+                                // gamePage.msg('Build: ' + btn[bl].model.name );
                                     // btn[bl].controller.buyItem(btn[bl].model, {}, function(result) {
                                     // if (result) {
                                     //     btn[bl].update();
@@ -265,7 +265,7 @@ function autoBuild() {
                      else if (btn[bl].model.metadata.name == "chronosphere"){
                         if ( ( gamePage.workshop.get("chronoforge").researched && gamePage.bld.getBuildingExt('chronosphere').meta.val >= 10 && ((gamePage.time.meta[0].meta[5].unlocked && gamePage.resPool.get("timeCrystal").value < gamePage.timeTab.cfPanel.children[0].children[6].model.prices.filter(res => res.name == "timeCrystal")[0].val * (gamePage.timeTab.cfPanel.children[0].children[6].model.metadata.val > 2 ? 0.7 : 0.05)) || !gamePage.science.get("paradoxalKnowledge").researched) ) || (gamePage.bld.getBuildingExt('chronosphere').meta.val < 20 && gamePage.timeTab.visible  &&  gamePage.resPool.get("timeCrystal").value - Chronosphere10SummPrices()["timeCrystal"] > 100 && gamePage.time.meta[0].meta[5].val > 0) || (gamePage.bld.getBuildingExt('chronosphere').meta.val < 10 && (gamePage.resPool.get("unobtainium").value >= Chronosphere10SummPrices()["unobtainium"]  && gamePage.resPool.get("timeCrystal").value >= Chronosphere10SummPrices()["timeCrystal"] )) ){
                             try {
-                                gamePage.msg('Build: ' + btn[bl].model.name );
+                                // gamePage.msg('Build: ' + btn[bl].model.name );
                                     // btn[bl].controller.buyItem(btn[bl].model, {}, function(result) {
                                     // if (result) {
                                     //     btn[bl].update();
@@ -291,7 +291,7 @@ function autoBuild() {
                                 {}
                                 else{
                                     try {
-                                        gamePage.msg('Build: ' + btn[bl].model.name );
+                                        // gamePage.msg('Build: ' + btn[bl].model.name );
                                             // btn[bl].controller.buyItem(btn[bl].model, {}, function(result) {
                                             // if (result) {
                                             //     btn[bl].update();
@@ -307,7 +307,7 @@ function autoBuild() {
                      }
                      else {
                              try {
-                                 gamePage.msg('Build: ' + btn[bl].model.name );
+                                 // gamePage.msg('Build: ' + btn[bl].model.name );
                                     // btn[bl].controller.buyItem(btn[bl].model, {}, function(result) {
                                     // if (result) {
                                     //     btn[bl].update();
@@ -343,7 +343,7 @@ function autoSpace() {
                                 }
                                 else if (gamePage.ironWill){
                                     if(!spBuild[sp].model.metadata.effects.maxKittens){
-                                        gamePage.msg('Build in Space: ' + spBuild[sp].model.name);
+                                        // gamePage.msg('Build in Space: ' + spBuild[sp].model.name);
                                         // spBuild[sp].controller.buyItem(spBuild[sp].model, {}, function(result) {
                                         // if (result) {
                                         //     spBuild[sp].update();
@@ -353,7 +353,7 @@ function autoSpace() {
                                         // });
                                     }
                                 }else{
-                                    gamePage.msg('Build in Space: ' + spBuild[sp].model.name);
+                                    // gamePage.msg('Build in Space: ' + spBuild[sp].model.name);
                                     // spBuild[sp].controller.buyItem(spBuild[sp].model, {}, function(result) {
                                     // if (result) {
                                     //     spBuild[sp].update();
@@ -374,7 +374,7 @@ function autoSpace() {
         for (var sp = 0; sp < spcProg.length; sp++) {
             if (spcProg[sp].model.metadata.unlocked && spcProg[sp].model.on == 0) {
                 try {
-                    gamePage.msg('Research Space program: ' + spcProg[sp].model.name );
+                    // gamePage.msg('Research Space program: ' + spcProg[sp].model.name );
                     // spcProg[sp].controller.buyItem(spcProg[sp].model, {}, function(result) {
                     //     if (result) {
                     //         spcProg[sp].update();
@@ -874,7 +874,7 @@ function autoResearch() {
                {}
             else{
                 try {
-                    gamePage.msg('Research: ' + btn[rsc].model.name);
+                    // gamePage.msg('Research: ' + btn[rsc].model.name);
                     // btn[rsc].controller.buyItem(btn[rsc].model, {}, function(result) {
                     //     if (result) {
                     //         btn[rsc].update();
@@ -895,7 +895,7 @@ function autoResearch() {
                     try {
                         pr_no_confirm = gamePage.opts.noConfirm;
                         gamePage.opts.noConfirm = true;
-                        gamePage.msg('Research Policy: ' + policy_btns[rsc].model.name);
+                        // gamePage.msg('Research Policy: ' + policy_btns[rsc].model.name);
                         // policy_btns[rsc].controller.buyItem(policy_btns[rsc].model, {}, function(result) {
                         //     if (result) {
                         //         policy_btns[rsc].update();
@@ -933,7 +933,7 @@ function autoWorkshop() {
             {}
             else{
                 try {
-                    gamePage.msg('Upgrade: ' + btn[wrs].model.name);
+                    // gamePage.msg('Upgrade: ' + btn[wrs].model.name);
                     // btn[wrs].controller.buyItem(btn[wrs].model, {}, function(result) {
                     //     if (result) {
                     //         btn[wrs].update();
@@ -1038,7 +1038,7 @@ function autozig() {
                 for (var zg = btn.length - 1; zg >= 0; zg--) {
                     if (btn[zg] && btn[zg].model.metadata.unlocked && (!btn[zg].model.prices.filter(res => res.name == "unobtainium")[0] || btn[zg].model.prices.filter(res => res.name == "unobtainium")[0].val < (gamePage.resPool.get('unobtainium').value - (gamePage.bld.getBuildingExt('chronosphere').meta.val < 10 ?  Chronosphere10SummPrices()["unobtainium"] : 0)) )) {
                         try {
-                            gamePage.msg('Build in Ziggurats: ' + btn[zg].model.name );
+                            // gamePage.msg('Build in Ziggurats: ' + btn[zg].model.name );
                             // btn[zg].controller.buyItem(btn[zg].model, {}, function(result) {
                             //     if (result) {
                             //             btn[zg].update();
@@ -1061,7 +1061,7 @@ function autozig() {
             for (var zg = 0; zg < btn.length; zg++) {
                 if (btn[zg] && btn[zg].model.visible == true) {
                     try {
-                        gamePage.msg('Refine tears: BLS(' + Math.trunc(gamePage.resPool.get('sorrow').value)  + ')');
+                        // gamePage.msg('Refine tears: BLS(' + Math.trunc(gamePage.resPool.get('sorrow').value)  + ')');
                          // btn[zg].controller.buyItem(btn[zg].model, {}, function(result) {
                          //    if (result) {
                          //        gamePage.msg('Refine tears: BLS(' + Math.trunc(gamePage.resPool.get('sorrow').value)  + ')');
@@ -1209,7 +1209,7 @@ function autoNip() {
 		if (gamePage.bld.buildingsData[0].val < 40 && gamePage.resPool.get('catnip').value < 100 && (gamePage.gatherClicks  < 2500 || gamePage.ironWill )) {
 		    btn = gamePage.tabs[0].children[0];
 			try {
-                gamePage.msg('Gather catnip');
+                // gamePage.msg('Gather catnip');
 				// btn.controller.buyItem(btn.model, {}, function(result) {
 				// 	if (result) {
                 //         if (gamePage.timer.ticksTotal % 151 === 0){
@@ -1337,7 +1337,7 @@ function ResearchSolarRevolution() {
             if (  gamePage.tabs[5].rUpgradeButtons.filter(res => res.model.metadata.name == "solarRevolution" && res.model.visible &&  res.model.enabled && res.model.resourceIsLimited == false).length > 0){
                     var btn = gamePage.tabs[5].rUpgradeButtons[5];
                     try {
-                        gamePage.msg('Research Religion: ' + btn.model.name);
+                        // gamePage.msg('Research Religion: ' + btn.model.name);
                         // btn.controller.buyItem(btn.model, {}, function(result) {
                         //     if (result) {
                         //         btn.update();
@@ -1365,7 +1365,7 @@ function Timepage() {
                     if ( Math.max(500, VoidBuild[2].model.on * 20) > voidcf * 0.1){
                         {}
                     }else {
-                        gamePage.msg('Fix Cryochamber');
+                        // gamePage.msg('Fix Cryochamber');
                         // VoidBuild[0].controller.buyItem(VoidBuild[0].model, {}, function(result) {
                         // if (result) {
                         //     gamePage.msg('Cryochamber Fixed');
@@ -1378,7 +1378,7 @@ function Timepage() {
                     if ( VoidBuild[1].model.prices.filter(res => res.name == 'void')[0].val > voidcf * 0.1 ||  VoidBuild[1].model.metadata.val >= Math.max(Math.ceil((VoidBuild[2].model.metadata.val+1) * 0.1), 5) ){
                         {}
                     }else {
-                        gamePage.msg('Build in Time: ' + VoidBuild[1].model.name );
+                        // gamePage.msg('Build in Time: ' + VoidBuild[1].model.name );
                         // VoidBuild[1].controller.buyItem(VoidBuild[1].model, {}, function(result) {
                         // if (result) {
                         //     VoidBuild[1].update();
@@ -1409,7 +1409,7 @@ function Timepage() {
                                 }
                                 else if (gamePage.ironWill){
                                     if(!VoidBuild[v].model.metadata.effects.maxKittens ){
-                                        gamePage.msg('Build in Time: ' + VoidBuild[v].model.name );
+                                        // gamePage.msg('Build in Time: ' + VoidBuild[v].model.name );
                                         // VoidBuild[v].controller.buyItem(VoidBuild[v].model, {}, function(result) {
                                         // if (result) {
                                         //     VoidBuild[v].update();
@@ -1418,7 +1418,7 @@ function Timepage() {
                                         // });
                                     }
                                 }else{
-                                    gamePage.msg('Build in Time: ' + VoidBuild[v].model.name );
+                                    // gamePage.msg('Build in Time: ' + VoidBuild[v].model.name );
                                     // VoidBuild[v].controller.buyItem(VoidBuild[v].model, {}, function(result) {
                                     // if (result) {
                                     //     VoidBuild[v].update();
@@ -1510,7 +1510,7 @@ function Timepage() {
                             else if ( t == 7)
                             {}
                             else if (chronoforge[t].model.metadata.unlocked && chronoforge[t].model.enabled) {
-                                gamePage.msg('Build in Time: ' + chronoforge[t].model.name );
+                                // gamePage.msg('Build in Time: ' + chronoforge[t].model.name );
                                 // chronoforge[t].controller.buyItem(chronoforge[t].model, {}, function(result) {
                                 //     if (result) {
                                 //         chronoforge[t].update();
