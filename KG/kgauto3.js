@@ -180,6 +180,7 @@ function autoPraise(){
                 for (var rl = 0; rl < btn.length; rl++) {
                     if (btn[rl].model.enabled && btn[rl].model.visible) {
                         try {
+                            gamePage.msg('Research Religion: ' + btn[rl].model.name);
                             // btn[rl].controller.buyItem(btn[rl].model, {}, function(result) {
                             //     if (result) {
                             //         btn[rl].update();
@@ -192,10 +193,10 @@ function autoPraise(){
                     }
                 }
                 if (gamePage.resPool.get("faith").value >= gamePage.resPool.get("faith").maxValue*0.99){
-                    // gamePage.religion.praise();
+                    gamePage.religion.praise();
                 }
         } else if (gamePage.resPool.get("faith").value >= gamePage.resPool.get("faith").maxValue*0.99 || gamePage.tabs[5].rUpgradeButtons.filter(res => res.model.metadata.name == "solarRevolution")[0].model.visible == false){
-              // gamePage.religion.praise();
+              gamePage.religion.praise();
         }
 
         if (!switches['CollectResBReset']) {
@@ -820,12 +821,12 @@ function autoCraft2() {
                          if (flag == true && cnt > 0) {
                             if (resourcesAllF[crf][0] == "ship") {
                                 if (gamePage.resPool.get("ship").value < 5000 || gamePage.resPool.get("starchart").value > 1500){
-                                    gamePage.msg('Craft: ' + resourcesAllF[crf][0]);
+                                    // gamePage.msg('Craft: ' + resourcesAllF[crf][0]);
                                     // gamePage.craft(resourcesAllF[crf][0], cnt);
                                 }
                             }
                             else {
-                                gamePage.msg('Craft: ' + resourcesAllF[crf][0]);
+                                // gamePage.msg('Craft: ' + resourcesAllF[crf][0]);
                                // gamePage.craft(resourcesAllF[crf][0], cnt);
                             }
                          }
@@ -838,12 +839,12 @@ function autoCraft2() {
                         var resourcePerCraft = Math.min((resourcePerTick * 5),curRes.value);
                         if (Object.keys(craftPriority[0]).length > 0  && craftPriority[3].indexOf(resources[crft][0]) != -1 ) {
                             if (curRes.value >= curRes.maxValue && gamePage.workshop.getCraft(resources[crft][1]).unlocked) {
-                                gamePage.msg('Craft: ' + resources[crft][1]);
+                                // gamePage.msg('Craft: ' + resources[crft][1]);
                                 // gamePage.craft(resources[crft][1], Math.ceil((resourcePerCraft / resources[crft][2])-1));
                             }
                         }
                         else if (curRes.value > (curRes.maxValue - resourcePerCraft) && gamePage.workshop.getCraft(resources[crft][1]).unlocked) {
-                            gamePage.msg('Craft: ' + resources[crft][1]);
+                            // gamePage.msg('Craft: ' + resources[crft][1]);
                             // gamePage.craft(resources[crft][1], Math.ceil((resourcePerCraft / resources[crft][2])-1));
                         }
                 }
