@@ -68,27 +68,26 @@ setInterval(
         }
 
         // autoHunt and Parchment Crafting Chain
-        if (catpower.value / catpower.maxValue > 0.99) {
+        if (catpower.unlocked && catpower.value / catpower.maxValue > 0.99) {
             gamePage.village.huntAll();
             if (parchmentC.unlocked) {
                 gamePage.craftAll('parchment');
-                if (culture.value / culture.maxValue > 0.99) {
-                    if (manuscriptC.unlocked && parchment.value > 2 * manuscript.value) {
-                        gamePage.craft('manuscript', Math.floor(culture.value/(2 * 300)));
-                        // gamePage.craftAll('manuscript');
-                        // gamePage.craft('manuscript', 1);
-                        if (compendiumC.unlocked) {
-                            if (manuscript.value > 2 * compendium.value && science.value / science.maxValue > 0.99 && compedium.value < 100) {
-                                gamePage.craft('compedium', Math.floor(science.value/(2 * 10000)));
-                            }
-                        }
-                        if (blueprintC.unlocked && blueprint.value < 100) {
-                            gamePage.craftAll('blueprint');
-                        }
-                    }
+            }
+            if (manuscriptC.unlocked && culture.unlocked && culture.value / culture.maxValue > 0.99 && parchment.value > 2 * manuscript.value) {
+                gamePage.craft('manuscript', Math.floor(culture.value / (2 * 300)));
+            }
+            if (compendiumC.unlocked) {
+                if (manuscript.value > 2 * compendium.value && science.value / science.maxValue > 0.99 && compedium.value < 100) {
+                    gamePage.craft('compedium', Math.floor(science.value/(2 * 10000)));
                 }
             }
+            if (blueprintC.unlocked && blueprint.value < 100) {
+                gamePage.craftAll('blueprint');
+            }
         }
+
+        // gamePage.craftAll('manuscript');
+        // gamePage.craft('manuscript', 1);
 
         // Steel Chain Crafting
         if (steelC.unlocked) {
