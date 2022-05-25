@@ -82,9 +82,9 @@ setInterval(
                 if (manuscript.value > 2 * compendium.value && science.value / science.maxValue > 0.99 && compendium.value < 100) {
                     gamePage.craft('compedium', Math.floor(science.value/(2 * 10000)));
                 }
-            }
-            if (blueprintC.unlocked && manuscript.value > 2 * blueprint.value) {
+                if (blueprintC.unlocked && manuscript.value > 2 * blueprint.value) {
                 gamePage.craft('blueprint', Math.floor(science.value/(2 * 25000)));
+                }
             }
         }
 
