@@ -59,7 +59,7 @@ setInterval(
 
         for (var i = 0; i < res1.length; i++) {
             if (res1[i][0].unlocked) {
-                if (res1[i][1].value / res1[i][1].maxValue > 0.94) {
+                if (res1[i][1].value / res1[i][1].maxValue > 0.99) {
                     gamePage.craft(res1[i][3], 1);
                     if (scaffoldC.unlocked && scaffold.value < 1000) {
                         gamePage.craftAll('scaffold');
@@ -79,7 +79,7 @@ setInterval(
                 gamePage.craft('manuscript', Math.floor(culture.value / (2 * 300)));
             }
             if (compendiumC.unlocked) {
-                if (manuscript.value > 2 * compendium.value && science.value / science.maxValue > 0.99 && compendium.value < 100) {
+                if (manuscript.value > 2 * compendium.value && science.value / science.maxValue > 0.99) {
                     gamePage.craft('compedium', Math.floor(science.value/(2 * 10000)));
                     if (blueprintC.unlocked && compendium.value > 2 * blueprint.value) {
                         gamePage.craft('blueprint', Math.floor(science.value/(2 * 25000)));
@@ -93,10 +93,10 @@ setInterval(
 
         // Steel Chain Crafting
         if (steelC.unlocked) {
-            if (coal.value / coal.maxValue > 0.90 && iron.value / iron.maxValue > 0.90) {
+            if (coal.value / coal.maxValue > 0.99 && iron.value / iron.maxValue > 0.99) {
                 gamePage.craft('steel', 1);
                 if (concreteC.unlocked) {
-                    if (slab.value > 10 * concrete.value && steel.value > 10 * concrete.value) {
+                    if (slab.value > 4 * concrete.value && steel.value > 4 * concrete.value) {
                         gamePage.craft('concrate', 1);
                     }
                 }
