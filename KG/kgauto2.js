@@ -8,15 +8,15 @@ setInterval(
         var iron = gamePage.resPool.get('iron');
         var titanium = gamePage.resPool.get('titanium');
         var gold = gamePage.resPool.get('gold');
-        // var oil = gamePage.resPool.get('oil');
-        // var uranium = gamePage.resPool.get('uranium');
-        // var unobtainium = gamePage.resPool.get('unobtainium');
-        // var antimatter = gamePage.resPool.get('antimatter');
+        var oil = gamePage.resPool.get('oil');
+        var uranium = gamePage.resPool.get('uranium');
+        var unobtainium = gamePage.resPool.get('unobtainium');
+        var antimatter = gamePage.resPool.get('antimatter');
         var catpower = gamePage.resPool.get('manpower');
         var science = gamePage.resPool.get('science');
         var culture = gamePage.resPool.get('culture');
         var faith = gamePage.resPool.get('faith');
-        // var starchart = gamePage.resPool.get('starchart');
+        var starchart = gamePage.resPool.get('starchart');
 
         var beam = gamePage.resPool.get('beam');
         var slab = gamePage.resPool.get('slab');
@@ -25,12 +25,14 @@ setInterval(
         var concrete = gamePage.resPool.get('concrate');
         var gear = gamePage.resPool.get('gear');
         var alloy = gamePage.resPool.get('alloy');
+        var eludium = gampePage.resPool.get('eludium');
         var scaffold = gamePage.resPool.get('scaffold');
-        // var thorium = gamePage.resPool.get('thorium');
+        var kerosene = gamePage.resPool.get('kerosene');
         var parchment = gamePage.resPool.get('parchment');
         var manuscript = gamePage.resPool.get('manuscript');
         var compendium = gamePage.resPool.get('compedium');
         var blueprint = gamePage.resPool.get('blueprint');
+        var thorium = gamePage.resPool.get('thorium');
 
         var woodC = gamePage.workshop.getCraft('wood');
         var beamC = gamePage.workshop.getCraft('beam');
@@ -41,7 +43,7 @@ setInterval(
         var gearC = gamePage.workshop.getCraft('gear');
         var alloyC = gamePage.workshop.getCraft('alloy');
         var scaffoldC = gamePage.workshop.getCraft('scaffold');
-        // var thoriumC = gamePage.workshop.getCraft('thorium');
+        var thoriumC = gamePage.workshop.getCraft('thorium');
         var parchmentC = gamePage.workshop.getCraft('parchment');
         var manuscriptC = gamePage.workshop.getCraft('manuscript');
         var compendiumC = gamePage.workshop.getCraft('compedium');
@@ -81,8 +83,8 @@ setInterval(
                     gamePage.craft('compedium', Math.floor(science.value/(2 * 10000)));
                 }
             }
-            if (blueprintC.unlocked && blueprint.value < 100) {
-                gamePage.craftAll('blueprint');
+            if (blueprintC.unlocked && manuscript.value > 2 * blueprint.value) {
+                gamePage.craft('blueprint', 1);
             }
         }
 
@@ -109,6 +111,18 @@ setInterval(
                     }
                 }
             }
+        }
+
+        if (eludium.unlocked && eludium.value > 2 * unobtainium.value && eludium.value > 2 * alloy.value) {
+            gamePage.craft('eludium', 1);
+        }
+
+        if (kerosene.unlocked && oil.value / oil.maxValue > 0.99) {
+            gamePage.craft('kerosene', 1);
+        }
+
+        if (thorium.unlocked && uranium.value / uranium.maxValue > 0.99) {
+            gamePage.craft('thorium', 1);
         }
 
         // autoPray
