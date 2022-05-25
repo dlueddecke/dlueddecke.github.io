@@ -25,7 +25,7 @@ setInterval(
         var concrete = gamePage.resPool.get('concrate');
         var gear = gamePage.resPool.get('gear');
         var alloy = gamePage.resPool.get('alloy');
-        var eludium = gampePage.resPool.get('eludium');
+        var eludium = gamePage.resPool.get('eludium');
         var scaffold = gamePage.resPool.get('scaffold');
         var kerosene = gamePage.resPool.get('kerosene');
         var parchment = gamePage.resPool.get('parchment');
