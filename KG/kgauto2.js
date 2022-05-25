@@ -84,7 +84,7 @@ setInterval(
                 }
             }
             if (blueprintC.unlocked && manuscript.value > 2 * blueprint.value) {
-                gamePage.craft('blueprint', 1);
+                gamePage.craft('blueprint', Math.floor(science.value/(2 * 25000)));
             }
         }
 
