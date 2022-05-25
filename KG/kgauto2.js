@@ -54,17 +54,17 @@ setInterval(
             [woodC, catnip, wood, 'wood'],
             [beamC, wood, beam, 'beam'],
             [slabC, minerals, slab, 'slab'],
-            [plateC, iron, plate, 'plate'],
+            // [plateC, iron, plate, 'plate'],
         ]
 
         for (var i = 0; i < res1.length; i++) {
             if (res1[i][0].unlocked) {
                 if (res1[i][1].value / res1[i][1].maxValue > 0.99) {
                     gamePage.craft(res1[i][3], 1);
-                    if (scaffoldC.unlocked && scaffold.value < 1000) {
-                        gamePage.craftAll('scaffold');
-                        // gamePage.craft('scaffold', 1);
-                    }
+                    // if (scaffoldC.unlocked && scaffold.value < 1000) {
+                    //     gamePage.craftAll('scaffold');
+                    //     // gamePage.craft('scaffold', 1);
+                    // }
                 }
             }
         }
@@ -94,22 +94,23 @@ setInterval(
         // Steel Chain Crafting
         if (steelC.unlocked) {
             if (coal.value / coal.maxValue > 0.99 && iron.value / iron.maxValue > 0.99) {
-                gamePage.craft('steel', 1);
-                if (concreteC.unlocked) {
-                    if (slab.value > 4 * concrete.value && steel.value > 4 * concrete.value) {
-                        gamePage.craft('concrate', 1);
-                    }
-                }
-                if (gearC.unlocked) {
-                    if (steel.value > 4 * gear.value) {
-                        gamePage.craft('gear', 1);
-                    }
-                }
-                if (alloyC.unlocked) {
-                    if (titanium.value / titanium.maxValue > 0.99 && steel.value > 4 * alloy.value) {
-                        gamePage.craft('alloy', 1);
-                    }
-                }
+                gamePage.craftAll('steel');
+                // gamePage.craft('steel', 1);
+                // if (concreteC.unlocked) {
+                //     if (slab.value > 4 * concrete.value && steel.value > 4 * concrete.value) {
+                //         gamePage.craft('concrate', 1);
+                //     }
+                // }
+                // if (gearC.unlocked) {
+                //     if (steel.value > 4 * gear.value) {
+                //         gamePage.craft('gear', 1);
+                //     }
+                // }
+                // if (alloyC.unlocked) {
+                //     if (titanium.value / titanium.maxValue > 0.99 && steel.value > 4 * alloy.value) {
+                //         gamePage.craft('alloy', 1);
+                //     }
+                // }
             }
         }
 
