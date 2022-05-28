@@ -27,8 +27,8 @@ setInterval(
         var alloy = gamePage.resPool.get('alloy');
         var eludium = gamePage.resPool.get('eludium');
         var scaffold = gamePage.resPool.get('scaffold');
-        var ship = game.resPool.get('ship');
-        var tanker = game.resPool.get('tanker');
+        var ship = gamePage.resPool.get('ship');
+        var tanker = gamePage.resPool.get('tanker');
         var kerosene = gamePage.resPool.get('kerosene');
         var parchment = gamePage.resPool.get('parchment');
         var manuscript = gamePage.resPool.get('manuscript');
@@ -96,7 +96,7 @@ setInterval(
 
         for (var m = 0; m < res6.length; m++) {
             if (res6[m][0].unlocked && res6[m][1].value / res6[m][0].value > 2 && res6[m][2].value / res6[m][0].value > 2 && res6[m][3].value / res6[m][0].value > 2) {
-                gamePage.workshop.craft(res6[m][0], 1);
+                gamePage.craft(res6[m][0], 1);
             }
         }
 
