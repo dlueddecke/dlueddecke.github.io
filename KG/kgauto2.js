@@ -27,49 +27,80 @@ setInterval(
         var alloy = gamePage.resPool.get('alloy');
         var eludium = gamePage.resPool.get('eludium');
         var scaffold = gamePage.resPool.get('scaffold');
+        var ship = game.resPool.get('ship');
+        var tanker = game.resPool.get('tanker');
         var kerosene = gamePage.resPool.get('kerosene');
         var parchment = gamePage.resPool.get('parchment');
         var manuscript = gamePage.resPool.get('manuscript');
         var compendium = gamePage.resPool.get('compedium');
         var blueprint = gamePage.resPool.get('blueprint');
         var thorium = gamePage.resPool.get('thorium');
+        var megalith = gamePage.resPool.get('megalith');
 
-        var woodC = gamePage.workshop.getCraft('wood');
-        var beamC = gamePage.workshop.getCraft('beam');
-        var slabC = gamePage.workshop.getCraft('slab');
-        var plateC = gamePage.workshop.getCraft('plate');
-        var steelC = gamePage.workshop.getCraft('steel');
-        var concreteC = gamePage.workshop.getCraft('concrate');
-        var gearC = gamePage.workshop.getCraft('gear');
-        var alloyC = gamePage.workshop.getCraft('alloy');
-        var scaffoldC = gamePage.workshop.getCraft('scaffold');
-        var thoriumC = gamePage.workshop.getCraft('thorium');
-        var parchmentC = gamePage.workshop.getCraft('parchment');
-        var manuscriptC = gamePage.workshop.getCraft('manuscript');
-        var compendiumC = gamePage.workshop.getCraft('compedium');
-        var blueprintC = gamePage.workshop.getCraft('blueprint');
-
-        // Base Crafting
+        // Res1 Crafting
         var res1 = [
-            [woodC, catnip, wood, 'wood'],
-            [beamC, wood, beam, 'beam'],
-            [slabC, minerals, slab, 'slab'],
-            // [plateC, iron, plate, 'plate'],
+            [wood, catnip, 'wood'],
+            [beam, wood, 'beam'],
+            [slab, minerals, 'slab'],
+            [plate, iron, 'plate'],
+            [kerosene, oil, 'kerosene'],
+            [thorium, uranium, 'thorium']
         ]
 
         for (var i = 0; i < res1.length; i++) {
-            if (res1[i][0].unlocked) {
-                if (res1[i][1].value / res1[i][1].maxValue > 0.95) {
-                    gamePage.craft(res1[i][3], 1);
-                    // if (scaffoldC.unlocked && scaffold.value < 1000) {
-                    //     gamePage.craftAll('scaffold');
-                    //     // gamePage.craft('scaffold', 1);
-                    // }
-                }
+            if (res1[i][0].unlocked && res1[i][1].value / res1[i][1].maxValue > 0.95) {
+                gamePage.craft(res1[i][2], 1);
             }
         }
 
-        // autoHunt and Parchment Crafting Chain
+        // Res2 Crafting
+        if (steel.unlocked && coal.value / coal.maxValue > 0.95 && iron.value / iron.maxValue > 0.95) {
+            gamePage.craft('steel', 1);
+        }
+
+        // Res3 Crafting
+        var res3 = [
+            [alloy, titanium, steel, 'alloy'],
+            [eludium, unobtainium, alloy, 'eludium']
+        ]
+
+        for (var j = 0; j < res3.length; j++) {
+            if (res[j][0].unlocked && res3[j][1].value / res3[j][1].maxValue > 0.95 && res3[j][2].value / res3[j][0].value > 2) {
+                gamePage.craft(res3[j][3], 1);
+            }
+        }
+
+        // Res4 Crafting
+        var res4 = [
+            [gear, steel, 'gear'],
+            [scaffold, beam, 'scaffold']
+        ]
+
+        for (var k = 0; k < res4.length; k++) {
+            if (res[k][0].unlocked && res[k][1].value / res[k][0] > 2) {
+                gamePage.craft(res4[k][2], 1);
+            }
+        }
+
+        // Res5 Crafting
+        if (concrete.unlocked && slab.value / concrete.value > 2 && steel.value / concrete.value > 2) {
+            gamePage.craft('concrate', 1);
+        }
+
+        // Res6 Crafting
+        var res6 = [
+            [ship, starchart, plate, scaffold, 'ship'],
+            [tanker, alloy, ship, blueprint, 'tanker'],
+            [megalith, beam, slab, plate, 'megalith']
+        ]
+
+        for (var m = 0; m < res6.length; m++) {
+            if (res[m][0].unlocked && res[m][1].value / res[m][0].value > 2 && res[m][2].value / res[m][0].value > 2 && res[m][3].value / res[m][0].value > 2) {
+                gamePage.craft(res[m][0], 1);
+            }
+        }
+
+        // autoHunt Crafting
         if (catpower.unlocked && catpower.value / catpower.maxValue > 0.95) {
             gamePage.village.huntAll();
             if (parchmentC.unlocked) {
@@ -88,44 +119,6 @@ setInterval(
             }
         }
 
-        // gamePage.craftAll('manuscript');
-        // gamePage.craft('manuscript', 1);
-
-        // Steel Chain Crafting
-        if (steelC.unlocked) {
-            if (coal.value / coal.maxValue > 0.95 && iron.value / iron.maxValue > 0.95) {
-                gamePage.craftAll('steel');
-                // gamePage.craft('steel', 1);
-                // if (concreteC.unlocked) {
-                //     if (slab.value > 4 * concrete.value && steel.value > 4 * concrete.value) {
-                //         gamePage.craft('concrate', 1);
-                //     }
-                // }
-                // if (gearC.unlocked) {
-                //     if (steel.value > 4 * gear.value) {
-                //         gamePage.craft('gear', 1);
-                //     }
-                // }
-                // if (alloyC.unlocked) {
-                //     if (titanium.value / titanium.maxValue > 0.99 && steel.value > 4 * alloy.value) {
-                //         gamePage.craft('alloy', 1);
-                //     }
-                // }
-            }
-        }
-
-        if (eludium.unlocked && eludium.value > 2 * unobtainium.value && eludium.value > 2 * alloy.value) {
-            gamePage.craft('eludium', 1);
-        }
-
-        if (kerosene.unlocked && oil.value / oil.maxValue > 0.95) {
-            gamePage.craft('kerosene', 1);
-        }
-
-        if (thorium.unlocked && uranium.value / uranium.maxValue > 0.95) {
-            gamePage.craft('thorium', 1);
-        }
-
         // autoPray
         if (faith.unlocked && faith.value / faith.maxValue > 0.95){
             gamePage.religion.praise();
@@ -133,7 +126,6 @@ setInterval(
 
         // autoPromote & autoManage
         if (gamePage.science.get('civil').researched && !gamePage.ironWill && gold.value / gold.maxValue > 0.95) {
-            // gamePage.village.sim.promote();
             gamePage.village.promoteKittens();
             gamePage.village.optimizeJobs();
         }
