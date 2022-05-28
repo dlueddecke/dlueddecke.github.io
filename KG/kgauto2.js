@@ -96,7 +96,7 @@ setInterval(
 
         for (var m = 0; m < res6.length; m++) {
             if (res6[m][0].unlocked && res6[m][1].value / res6[m][0].value > 2 && res6[m][2].value / res6[m][0].value > 2 && res6[m][3].value / res6[m][0].value > 2) {
-                gamePage.craft(res6[m][0], 1);
+                gamePage.craft(res6[m][4], 1);
             }
         }
 
