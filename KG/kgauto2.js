@@ -106,13 +106,13 @@ setInterval(
             if (parchmentC.unlocked) {
                 gamePage.craftAll('parchment');
             }
-            if (manuscriptC.unlocked && culture.unlocked && culture.value / culture.maxValue > 0.95 && parchment.value > 2 * manuscript.value) {
+            if (manuscript.unlocked && culture.unlocked && culture.value / culture.maxValue > 0.95 && parchment.value > 2 * manuscript.value) {
                 gamePage.craft('manuscript', Math.floor(culture.value / (2 * 300)));
             }
-            if (compendiumC.unlocked) {
+            if (compendium.unlocked) {
                 if (manuscript.value > 2 * compendium.value && science.value / science.maxValue > 0.95) {
                     gamePage.craft('compedium', Math.floor(science.value/(2 * 10000)));
-                    if (blueprintC.unlocked && compendium.value > 2 * blueprint.value) {
+                    if (blueprint.unlocked && compendium.value > 2 * blueprint.value) {
                         gamePage.craft('blueprint', Math.floor(science.value/(2 * 25000)));
                     }
                 }
