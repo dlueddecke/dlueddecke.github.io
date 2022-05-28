@@ -126,7 +126,7 @@ setInterval(
 
         // autoPromote & autoManage
         if (gamePage.science.get('civil').researched && !gamePage.ironWill && gold.value / gold.maxValue > 0.95) {
-            gamePage.village.promoteKittens();
+            // gamePage.village.promoteKittens();
             // gamePage.village.optimizeJobs();
         }
 
