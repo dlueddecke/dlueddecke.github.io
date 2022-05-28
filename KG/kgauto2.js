@@ -65,7 +65,7 @@ setInterval(
         ]
 
         for (var j = 0; j < res3.length; j++) {
-            if (res[j][0].unlocked && res3[j][1].value / res3[j][1].maxValue > 0.95 && res3[j][2].value / res3[j][0].value > 2) {
+            if (res3[j][0].unlocked && res3[j][1].value / res3[j][1].maxValue > 0.95 && res3[j][2].value / res3[j][0].value > 2) {
                 gamePage.craft(res3[j][3], 1);
             }
         }
@@ -77,7 +77,7 @@ setInterval(
         ]
 
         for (var k = 0; k < res4.length; k++) {
-            if (res[k][0].unlocked && res[k][1].value / res[k][0] > 2) {
+            if (res4[k][0].unlocked && res4[k][1].value / res4[k][0] > 2) {
                 gamePage.craft(res4[k][2], 1);
             }
         }
@@ -95,7 +95,7 @@ setInterval(
         ]
 
         for (var m = 0; m < res6.length; m++) {
-            if (res[m][0].unlocked && res[m][1].value / res[m][0].value > 2 && res[m][2].value / res[m][0].value > 2 && res[m][3].value / res[m][0].value > 2) {
+            if (res6[m][0].unlocked && res6[m][1].value / res6[m][0].value > 2 && res6[m][2].value / res6[m][0].value > 2 && res6[m][3].value / res6[m][0].value > 2) {
                 gamePage.craft(res[m][0], 1);
             }
         }
