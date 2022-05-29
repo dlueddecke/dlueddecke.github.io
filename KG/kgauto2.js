@@ -17,6 +17,8 @@ setInterval(
         var culture = gamePage.resPool.get('culture');
         var faith = gamePage.resPool.get('faith');
         var starchart = gamePage.resPool.get('starchart');
+        var unicorns = gamePage.resPool.get('unicorns');
+        var alicorns = gamePage.resPool.get('alicorn');
 
         var beam = gamePage.resPool.get('beam');
         var slab = gamePage.resPool.get('slab');
@@ -103,7 +105,7 @@ setInterval(
         // autoHunt Crafting
         if (catpower.unlocked && catpower.value / catpower.maxValue > 0.95) {
             gamePage.village.huntAll();
-            if (parchmentC.unlocked) {
+            if (parchment.unlocked) {
                 gamePage.craftAll('parchment');
             }
             if (manuscript.unlocked && culture.unlocked && culture.value / culture.maxValue > 0.95 && parchment.value > 2 * manuscript.value) {
@@ -128,6 +130,16 @@ setInterval(
         if (gamePage.science.get('civil').researched && !gamePage.ironWill && gold.value / gold.maxValue > 0.95) {
             // gamePage.village.promoteKittens();
             // gamePage.village.optimizeJobs();
+        }
+
+        // autoSacrifice Unicorns
+        if (gamePage.religionTab.sacrificeBtn.model.allLink.visible && unicorns.value > 1000000) {
+            gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function(){});
+        }
+
+        // autoSacrifice Alicorns
+        if (gamePage.religionTab.sacrificeAlicornsBtn.model.allLink.visible) {
+            gamePage.religionTab.sacrificeAlicornsBtn.controller.transform(gamePage.religionTab.sacrificeAlicornsBtn.model, 1, {}, function(){});
         }
 
     game.tick();
