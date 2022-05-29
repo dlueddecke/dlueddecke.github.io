@@ -79,7 +79,7 @@ setInterval(
         ]
 
         for (var k = 0; k < res4.length; k++) {
-            if (res4[k][0].unlocked && res4[k][1].value / res4[k][0] > 2) {
+            if (res4[k][0].unlocked && res4[k][1].value / res4[k][0].value > 2) {
                 gamePage.craft(res4[k][2], 1);
             }
         }
@@ -133,13 +133,17 @@ setInterval(
         }
 
         // autoSacrifice Unicorns
-        if (gamePage.religionTab.sacrificeBtn.model.allLink.visible && unicorns.value > 1000000) {
+        if (gamePage.religionTab.sacrificeBtn) {
+            if (gamePage.religionTab.sacrificeBtn.model.allLink.visible && unicorns.value > 1000000) {
             gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function(){});
+            }
         }
 
         // autoSacrifice Alicorns
-        if (gamePage.religionTab.sacrificeAlicornsBtn.model.allLink.visible) {
+        if (gamePage.religionTab.sacrificeAlicornsBtn) {
+          if (gamePage.religionTab.sacrificeAlicornsBtn.model.allLink.visible) {
             gamePage.religionTab.sacrificeAlicornsBtn.controller.transform(gamePage.religionTab.sacrificeAlicornsBtn.model, 1, {}, function(){});
+            }
         }
 
     game.tick();
