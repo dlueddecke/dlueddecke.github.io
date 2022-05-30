@@ -134,11 +134,30 @@ setInterval(
                 }
         }
 
-        // autoSacrifice Unicorns
+        // // autoSacrifice Unicorns
+        // if (unicorns.unlocked) {
+        //     if (unicorns.value < 1000000) {
+        //         var unicornPasture = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'unicornPasture')[0];
+        //         if (unicorns.value > unicornPasture.)
+        //             unicornPasture.controller.buyItem(unicornPasture.model, {}, function () {});
+        //     } else if (unicorns.value > 1000000) {
+        //         if (gamePage.religionTab.sacrificeBtn) {
+        //             if (gamePage.religionTab.sacrificeBtn.model.allLink.visible) {
+        //                 gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function () {});
+        //             }
+        //         }
+        //     }
+        // }
+
+        	          // autoSacrifice Unicorns - TESTING
         if (unicorns.unlocked) {
             if (unicorns.value < 1000000) {
                 var unicornPasture = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'unicornPasture')[0];
-                unicornPasture.controller.buyItem(unicornPasture.model, {}, function () {});
+	              try {
+                    unicornPasture.controller.buyItem(unicornPasture.model, {}, function () {});
+				  } catch (err) {
+					  console.log(err);
+				  }
             } else if (unicorns.value > 1000000) {
                 if (gamePage.religionTab.sacrificeBtn) {
                     if (gamePage.religionTab.sacrificeBtn.model.allLink.visible) {
@@ -147,6 +166,7 @@ setInterval(
                 }
             }
         }
+
 
         // autoSacrifice Alicorns
         if (gamePage.religionTab.sacrificeAlicornsBtn) {
