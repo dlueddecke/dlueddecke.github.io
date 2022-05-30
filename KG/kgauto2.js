@@ -172,6 +172,11 @@ setInterval(
 		    }
 	    }
 
+        // autoTrade with Leviathans
+        if (gamePage.diplomacy.get('leviathans').unlocked && gamePage.diplomacy.get('leviathans').duration != 0 && gamePage.resPool.get('unobtainium').value > 5000) {
+            gamePage.diplomacy.tradeMultiple(game.diplomacy.get("leviathans"),1);
+        }
+
     game.tick();
 
     },5)
