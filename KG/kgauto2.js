@@ -255,14 +255,13 @@ setInterval(
           }
 	  }
 
-      if (gamePage.village.getKittens() > 400) {
-          var secondTierBuilds = ['warehouse', 'harbor', 'accelerator', 'biolab'];
-          for (var bld2 = 0; bld2 < secondTierBuilds.length; bld2++) {
-              if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.unlocked) {
-                  if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.val < 200) {
-                      btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == secondTierBuilds[bld2])[0];
-                      btn.controller.buyItem(btn.model, {}, function() {});
-                  }
+      var kittens = gamePage.village.getKittens();
+      var secondTierBuilds = ['warehouse', 'harbor', 'accelerator', 'biolab'];
+      for (var bld2 = 0; bld2 < secondTierBuilds.length; bld2++) {
+          if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.unlocked) {
+              if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.val < kittens / 2) {
+                  btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == secondTierBuilds[bld2])[0];
+                  btn.controller.buyItem(btn.model, {}, function() {});
               }
           }
       }
