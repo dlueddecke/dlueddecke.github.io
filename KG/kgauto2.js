@@ -135,13 +135,16 @@ setInterval(
         }
 
         // autoSacrifice Unicorns
-        if (unicorns.unlocked && gamePage.religionTab.sacrificeBtn) {
-            if (gamePage.religionTab.sacrificeBtn.model.allLink.visible && unicorns.value > 1000000) {
-                gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function(){});
-            }
-            else {
+        if (unicorns.unlocked) {
+            if (unicorns.value < 1000000) {
                 var unicornPasture = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'unicornPasture')[0];
-                unicornPasture.controller.buyItem(unicornPasture.model, {}, function() {});
+                unicornPasture.controller.buyItem(unicornPasture.model, {}, function () {});
+            } else if (unicorns.value > 1000000) {
+                if (gamePage.religionTab.sacrificeBtn) {
+                    if (gamePage.religionTab.sacrificeBtn.model.allLink.visible) {
+                        gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function () {});
+                    }
+                }
             }
         }
 
@@ -174,7 +177,8 @@ setInterval(
 
         // autoTrade with Leviathans
         if (gamePage.diplomacy.get('leviathans').unlocked && gamePage.diplomacy.get('leviathans').duration != 0 && gamePage.resPool.get('unobtainium').value > 5000) {
-            gamePage.diplomacy.tradeMultiple(game.diplomacy.get("leviathans"),1);
+            // gamePage.diplomacy.tradeMultiple(game.diplomacy.get("leviathans"),1);
+            gamePage.diplomacy.tradeAll(game.diplomacy.get("leviathans"));
         }
 
     game.tick();
