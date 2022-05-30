@@ -149,7 +149,7 @@ setInterval(
         //     }
         // }
 
-        	          // autoSacrifice Unicorns - TESTING
+      // autoSacrifice Unicorns - TESTING
         if (unicorns.unlocked) {
             if (unicorns.value < 1000000) {
                 var unicornPasture = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'unicornPasture')[0];
@@ -166,7 +166,6 @@ setInterval(
                 }
             }
         }
-
 
         // autoSacrifice Alicorns
         if (gamePage.religionTab.sacrificeAlicornsBtn) {
@@ -200,6 +199,139 @@ setInterval(
             // gamePage.diplomacy.tradeMultiple(game.diplomacy.get("leviathans"),1);
             gamePage.diplomacy.tradeAll(game.diplomacy.get("leviathans"));
         }
+
+        // autoBuy Fields
+        if (gamePage.bld.getBuildingExt('field').meta.unlocked) {
+            var fieldBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'field')[0];
+            fieldBtn.controller.buyItem(fieldBtn.model, {}, function () {});
+        }
+
+        // autoBuilds
+	    var priorityBuilds = ['field', 'pasture', 'aqueduct', 'mine', 'smelter', 'lumberMill', 'workshop', 'hut', 'logHouse', 'library', 'academy', 'observatory', 'steamworks', 'calciner', 'mansion', 'amphitheatre', 'temple', 'tradepost', 'ziggurat', 'chapel', 'magneto', 'oilWell', 'barn', 'chronosphere'];
+
+        for (var bld = 0; bld < priorityBuilds.length; bld++) {
+            if (gamePage.bld.getBuildingExt(priorityBuilds[bld]).meta.unlocked) {
+                btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == priorityBuilds[bld])[0];
+                btn.controller.buyItem(btn.model, {}, function () {});
+            }
+        }
+
+	  // console.log(gamePage.bld.getBuildingExt('field').meta.unlocked);
+	  // var fieldBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'field')[0];
+	  // console.log(fieldBtn);
+	  // fieldBtn.controller.buyItem(fieldBtn.model, {}, function() {});
+
+	  // var pastureBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'pasture')[0];
+	  // pastureBtn.controller.buyItem(pastureBtn.model, {}, function() {});
+
+	  // var aqueductBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'aqueduct')[0];
+	  // aqueductBtn.controller.buyItem(aqueductBtn.model, {}, function() {});
+
+	  // var mineBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'mine')[0];
+	  // mineBtn.controller.buyItem(mineBtn.model, {}, function() {});
+
+	  // var lumberMillBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'lumberMill')[0];
+	  // lumberMillBtn.controller.buyItem(lumberMillBtn.model, {}, function() {});
+
+	  // var smelterBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'smelter')[0];
+	  // smelterBtn.controller.buyItem(smelterBtn.model, {}, function() {});
+
+	  // var workshopBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'workshop')[0];
+	  // workshopBtn.controller.buyItem(workshopBtn.model, {}, function() {});
+
+	  // var hutBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'hut')[0];
+	  // hutBtn.controller.buyItem(hutBtn.model, {}, function() {});
+
+	  // var logHouseBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'logHouse')[0];
+	  // logHouseBtn.controller.buyItem(logHouseBtn.model, {}, function() {});
+
+	  // var libraryBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'library')[0];
+	  // libraryBtn.controller.buyItem(libraryBtn.model, {}, function() {});
+
+	  if (uranium.unlocked) {
+          if (gamePage.bld.getBuildingExt('reactor').meta.unlocked) {
+              btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'reactor')[0];
+              btn.controller.buyItem(btn.model, {}, function() {});
+          }
+	  }
+
+      if (gamePage.village.getKittens() > 400) {
+          var secondTierBuilds = ['warehouse', 'harbor', 'accelerator', 'biolab'];
+          for (var bld2 = 0; bld2 < secondTierBuilds.length; bld2++) {
+              if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.unlocked) {
+                  if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.val < 200) {
+                      btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == secondTierBuilds[bld2])[0];
+                      btn.controller.buyItem(btn.model, {}, function() {});
+                  }
+              }
+          }
+      }
+
+      var farmer = gamePage.village.getJob('farmer');
+	  if (farmer.unlocked) {
+		  if (farmer.value < 10 && game.village.getFreeKittens() != 0) {
+              gamePage.village.assignJob(farmer, 1);
+		  }
+	  }
+
+	  var jobs = ['woodcutter', 'scholar', 'hunter', 'miner', 'priest', 'geologist'];
+	  var unlockedJobs = [];
+	  for (i = 0; i < jobs.length; i++) {
+		  var job = gamePage.village.getJob(jobs[i]);
+		  if (job.unlocked) {
+			  unlockedJobs.push(job.value);
+		  }
+	  }
+	  var minJob = Math.min(...unlockedJobs);
+      for (i = 0; i < jobs.length; i++) {
+          var job2 = gamePage.village.getJob(jobs[i]);
+          if (job2.value == minJob && game.village.getFreeKittens() != 0) {
+              gamePage.village.assignJob(job2, 1);
+          }
+      }
+
+      priSpaceBuilds = [
+          // Rorchach
+          'spaceElevator', 'sattelite', 'spaceStation', // Cath
+          'moonOutpost', 'moonBase', // Redmoon
+          'planetCracker', 'hydrofracturer', 'spaceRefinery', // Dune
+          'researchVessel', // 'orbitalArray', // Piscine
+          'sunlifter', 'heatsink', // 'containmentChamber', 'sunforge', // Helios
+          'cryostation', // T-Minus
+          'spaceBeacon', // Kairo
+          'terraformingStation', 'hydroponics', // Yarn
+          'hrHarvester', // Umbra
+          // Charon
+          'tectonic',  // Centaurus System
+          // Furthest Ring
+          ];
+
+      // for (var p = 0; p < priSpaceBuilds.length; p++) {
+		  // console.log(priSpaceBuilds[p]);
+			if (gamePage.spaceTab.visible) {
+			          for (var z = 0; z < gamePage.spaceTab.planetPanels.length; z++) {
+			              var spBuild = gamePage.spaceTab.planetPanels[z].children;
+			              // try {
+			                  for (var sp = 0; sp < spBuild.length; sp++) {
+			                      if (spBuild[sp].model.metadata.unlocked) {
+			                          if (priSpaceBuilds.includes(spBuild[sp].model.metadata.name)) {
+			                              spBuild[sp].controller.buyItem(spBuild[sp].model, {}, function(result) {
+		                                    if (result) {
+		                                        spBuild[sp].update();
+	                                            gamePage.msg('Build in Space: ' + spBuild[sp].model.name);
+	                                            return;
+	                                        }
+                                        });
+			                          }
+			                      }
+			                  }
+			              // } catch(err) {
+			                  // console.log(err);
+			              // }
+			          }
+			      }
+
+	  	// }
 
     game.tick();
 
