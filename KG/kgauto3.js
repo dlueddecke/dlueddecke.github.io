@@ -950,17 +950,17 @@ function autoWorkshop() {
 }
 
 // Festival automatically
-function autoParty() {
+// function autoParty() {
 	if (gamePage.science.get("drama").researched) {
-		var catpowerP = gamePage.resPool.get('manpower').value;
+		// var catpowerP = gamePage.resPool.get('manpower').value;
 		var culture = gamePage.resPool.get('culture').value;
 		var parchment = gamePage.resPool.get('parchment').value;
 		var tclvl = Math.max(gamePage.religion.transcendenceTier,1);
 
-		if (catpowerP > 1500 && culture > 5000 && parchment > 2500) {
+		if (catpower > 1500 && culture > 5000 && parchment > 2500) {
 		    if (gamePage.prestige.getPerk("carnivals").researched){
                 if (gamePage.calendar.festivalDays < 400*30) {
-                    if(catpowerP > 1500 * tclvl && culture > 5000 * tclvl && parchment > 2500 * tclvl){
+                    if(catpower > 1500 * tclvl && culture > 5000 * tclvl && parchment > 2500 * tclvl){
                         gamePage.village.holdFestival(tclvl);
                     }
                     else{
@@ -973,7 +973,7 @@ function autoParty() {
 			}
 		}
 	}
-}
+// }
 
 function autozig() {
     if (gamePage.religionTab.visible) {

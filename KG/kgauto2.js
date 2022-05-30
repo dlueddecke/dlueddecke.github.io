@@ -128,14 +128,20 @@ setInterval(
 
         // autoPromote & autoManage
         if (gamePage.science.get('civil').researched && !gamePage.ironWill && gold.value / gold.maxValue > 0.95) {
-            // gamePage.village.promoteKittens();
-            // gamePage.village.optimizeJobs();
+                if (gamePage.calendar.season == 0 && gamePage.calendar.day == 0) {
+            gamePage.village.promoteKittens();
+            gamePage.village.optimizeJobs();
+                }
         }
 
         // autoSacrifice Unicorns
-        if (gamePage.religionTab.sacrificeBtn) {
+        if (unicorns.unlocked && gamePage.religionTab.sacrificeBtn) {
             if (gamePage.religionTab.sacrificeBtn.model.allLink.visible && unicorns.value > 1000000) {
-            gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function(){});
+                gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function(){});
+            }
+            else {
+                var unicornPasture = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'unicornPasture')[0];
+                unicornPasture.controller.buyItem(unicornPasture.model, {}, function() {});
             }
         }
 
@@ -145,6 +151,26 @@ setInterval(
             gamePage.religionTab.sacrificeAlicornsBtn.controller.transform(gamePage.religionTab.sacrificeAlicornsBtn.model, 1, {}, function(){});
             }
         }
+
+        // autoParty
+	    if (gamePage.science.get("drama").researched) {
+		    var tclvl = Math.max(gamePage.religion.transcendenceTier,1);
+    		if (catpower.value > 1500 && culture.value > 5000 && parchment.value > 2500) {
+		        if (gamePage.prestige.getPerk("carnivals").researched){
+                    if (gamePage.calendar.festivalDays < 400*30) {
+                        if(catpower.value > 1500 * tclvl && culture.value > 5000 * tclvl && parchment.value > 2500 * tclvl){
+                            gamePage.village.holdFestival(tclvl);
+                        }
+                        else{
+                            gamePage.village.holdFestival(1);
+                        }
+                    }
+			    }
+			    else if (gamePage.calendar.festivalDays == 0) {
+			        gamePage.village.holdFestival(1);
+			    }
+		    }
+	    }
 
     game.tick();
 
