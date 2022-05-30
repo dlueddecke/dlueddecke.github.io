@@ -259,7 +259,7 @@ setInterval(
       var secondTierBuilds = ['warehouse', 'harbor', 'accelerator', 'biolab'];
       for (var bld2 = 0; bld2 < secondTierBuilds.length; bld2++) {
           if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.unlocked) {
-              if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.val < kittens / 2) {
+              if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.val < kittens / 3) {
                   btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == secondTierBuilds[bld2])[0];
                   btn.controller.buyItem(btn.model, {}, function() {});
               }
