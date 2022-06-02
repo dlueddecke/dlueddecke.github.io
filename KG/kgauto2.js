@@ -129,10 +129,10 @@ setInterval(
 
         // autoPromote & autoManage
         if (gamePage.science.get('civil').researched && !gamePage.ironWill && gold.value / gold.maxValue > 0.95) {
-                if (gamePage.calendar.season == 0 && gamePage.calendar.day == 0) {
-            gamePage.village.promoteKittens();
-            gamePage.village.optimizeJobs();
-                }
+            if (gamePage.calendar.season == 0 && gamePage.calendar.day == 0) {
+                gamePage.village.promoteKittens();
+                gamePage.village.optimizeJobs();
+            }
         }
 
         // // autoSacrifice Unicorns
@@ -218,10 +218,11 @@ setInterval(
             'calciner',
             'factory',
             'tradepost', 'amphitheatre', 'temple', 'chapel',
-            // 'magneto', 'oilWell',
+            'magneto', 'oilWell',
             'barn', 'warehouse', 'harbor',
             'ziggurat',
             'chronosphere',
+            'mint',
         ];
 
         for (var bld = 0; bld < priorityBuilds.length; bld++) {
@@ -340,6 +341,12 @@ setInterval(
           }
       }
 	  	// }
+
+      	   if (gamePage.workshop.get("chronoforge").researched && gamePage.resPool.get("timeCrystal").value > 1000) {
+		   var chronoforge = gamePage.timeTab.cfPanel.children[0].children;
+		   chronoforge[0].controller.doShatterAmt(chronoforge[0].model, gamePage.calendar.yearsPerCycle)
+		   chronoforge[0].update();
+	   }
 
     game.tick();
 
