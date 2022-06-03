@@ -208,21 +208,15 @@ setInterval(
         // }
 
         // autoBuilds
-	    var priorityBuilds = ['field', 'pasture', 'aqueduct',
-            'mine', 'smelter', 'lumberMill', 'quarry',
-            'workshop',
-            'hut', 'logHouse',
-            'mansion',
-            'library', 'academy', 'observatory',
-            'steamworks',
-            'calciner',
-            'factory',
-            'tradepost', 'amphitheatre', 'temple', 'chapel',
-            'magneto', 'oilWell',
-            'barn', 'warehouse', 'harbor',
-            'ziggurat',
-            'chronosphere',
-            'mint',
+	    var priorityBuilds = ['field', 'pasture', 'aqueduct', // Food Production
+            'hut', 'logHouse', 'mansion', // Population
+            'library', 'academy', 'observatory', 'biolab', // Science
+            'barn', 'warehouse', 'harbor', // Storage
+            'mine', 'quarry', 'lumberMill', 'oilWell', 'accelerator', // Resources
+            'steamworks', 'magneto', 'smelter', 'calciner', 'factory', 'reactor', // Industry
+            'amphitheatre', 'chapel', 'temple', // Culture
+            'workshop', 'tradepost', 'mint', 'unicornPasture', 'brewery', // Other
+            'ziggurat', 'chronosphere', // Mega Structures
         ];
 
         for (var bld = 0; bld < priorityBuilds.length; bld++) {
@@ -244,36 +238,36 @@ setInterval(
 	  // console.log(fieldBtn);
 	  // fieldBtn.controller.buyItem(fieldBtn.model, {}, function() {});
 
-	  if (uranium.unlocked) {
-          if (gamePage.bld.getBuildingExt('reactor').meta.unlocked) {
-              btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'reactor')[0];
-              btn.controller.buyItem(btn.model, {}, function(result) {
-                  if (result) {
-                      btn.update();
-                      gamePage.msg('Build: ' + btn.model.name );
-                      return;
-                  }
-              });
-          }
-	  }
+	  // if (uranium.unlocked) {
+      //     if (gamePage.bld.getBuildingExt('reactor').meta.unlocked) {
+      //         btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'reactor')[0];
+      //         btn.controller.buyItem(btn.model, {}, function(result) {
+      //             if (result) {
+      //                 btn.update();
+      //                 gamePage.msg('Build: ' + btn.model.name );
+      //                 return;
+      //             }
+      //         });
+      //     }
+	  // }
 
-      var kittens = gamePage.village.getKittens();
-      var secondTierBuilds = ['accelerator', 'biolab'];
-      for (var bld2 = 0; bld2 < secondTierBuilds.length; bld2++) {
-          if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.unlocked) {
-              if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.val < kittens / 4) {
-                  btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == secondTierBuilds[bld2])[0];
-                  // btn.controller.buyItem(btn.model, {}, function() {});
-                  btn.controller.buyItem(btn.model, {}, function(result) {
-                      if (result) {
-                          btn.update();
-                          gamePage.msg('Build: ' + btn.model.name );
-                          return;
-                      }
-                  });
-              }
-          }
-      }
+      // var kittens = gamePage.village.getKittens();
+      // var secondTierBuilds = ['accelerator', 'biolab'];
+      // for (var bld2 = 0; bld2 < secondTierBuilds.length; bld2++) {
+      //     if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.unlocked) {
+      //         if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.val < kittens / 4) {
+      //             btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == secondTierBuilds[bld2])[0];
+      //             // btn.controller.buyItem(btn.model, {}, function() {});
+      //             btn.controller.buyItem(btn.model, {}, function(result) {
+      //                 if (result) {
+      //                     btn.update();
+      //                     gamePage.msg('Build: ' + btn.model.name );
+      //                     return;
+      //                 }
+      //             });
+      //         }
+      //     }
+      // }
 
       var farmer = gamePage.village.getJob('farmer');
 	  if (farmer.unlocked) {
@@ -310,8 +304,8 @@ setInterval(
           'spaceBeacon', // Kairo
           'terraformingStation', 'hydroponics', // Yarn
           'hrHarvester', // Umbra
-          // Charon
-          'tectonic',  // Centaurus System
+          'entanglementStation', // Charon
+          'tectonic', 'moltenCore', // Centaurus System
           // Furthest Ring
           ];
 
@@ -342,10 +336,10 @@ setInterval(
       }
 	  	// }
 
-      	   if (gamePage.workshop.get("chronoforge").researched && gamePage.resPool.get("timeCrystal").value > 1000) {
-		   var chronoforge = gamePage.timeTab.cfPanel.children[0].children;
-		   chronoforge[0].controller.doShatterAmt(chronoforge[0].model, gamePage.calendar.yearsPerCycle)
-		   chronoforge[0].update();
+       if (gamePage.workshop.get("chronoforge").researched && gamePage.resPool.get("timeCrystal").value > 25) {
+       var chronoforge = gamePage.timeTab.cfPanel.children[0].children;
+       chronoforge[0].controller.doShatterAmt(chronoforge[0].model, gamePage.calendar.yearsPerCycle)
+       chronoforge[0].update();
 	   }
 
     game.tick();
