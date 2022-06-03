@@ -336,7 +336,7 @@ setInterval(
       }
 	  	// }
 
-       if (gamePage.workshop.get("chronoforge").researched && gamePage.resPool.get("timeCrystal").value > 25) {
+       if (gamePage.workshop.get("chronoforge").researched && gamePage.resPool.get("timeCrystal").value > 500) {
        var chronoforge = gamePage.timeTab.cfPanel.children[0].children;
        chronoforge[0].controller.doShatterAmt(chronoforge[0].model, gamePage.calendar.yearsPerCycle)
        chronoforge[0].update();
