@@ -56,11 +56,6 @@ setInterval(
             }
         }
 
-        // Res2 Crafting
-        // if (steel.unlocked && coal.value / coal.maxValue > 0.95 && iron.value / iron.maxValue > 0.95) {
-        //     gamePage.craft('steel', 1);
-        // }
-
         // Res3 Crafting
         var res3 = [
             [alloy, titanium, steel, 'alloy'],
@@ -99,7 +94,7 @@ setInterval(
 
         for (var m = 0; m < res6.length; m++) {
             if (res6[m][0].unlocked && res6[m][1].value / res6[m][0].value > 2 && res6[m][2].value / res6[m][0].value > 2 && res6[m][3].value / res6[m][0].value > 2) {
-                gamePage.craft(res6[m][4], 1);
+                // gamePage.craft(res6[m][4], 1);
             }
         }
 
@@ -135,38 +130,23 @@ setInterval(
             }
         }
 
-        // // autoSacrifice Unicorns
-        // if (unicorns.unlocked) {
-        //     if (unicorns.value < 1000000) {
-        //         var unicornPasture = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'unicornPasture')[0];
-        //         if (unicorns.value > unicornPasture.)
-        //             unicornPasture.controller.buyItem(unicornPasture.model, {}, function () {});
-        //     } else if (unicorns.value > 1000000) {
-        //         if (gamePage.religionTab.sacrificeBtn) {
-        //             if (gamePage.religionTab.sacrificeBtn.model.allLink.visible) {
-        //                 gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function () {});
-        //             }
-        //         }
-        //     }
-        // }
-
       // autoSacrifice Unicorns - TESTING
-        if (unicorns.unlocked) {
-            if (unicorns.value < 1000000) {
-                var unicornPasture = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'unicornPasture')[0];
-	              try {
-                    unicornPasture.controller.buyItem(unicornPasture.model, {}, function () {});
-				  } catch (err) {
-					  console.log(err);
-				  }
-            } else if (unicorns.value > 1000000) {
-                if (gamePage.religionTab.sacrificeBtn) {
-                    if (gamePage.religionTab.sacrificeBtn.model.allLink.visible) {
-                        gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function () {});
-                    }
-                }
-            }
-        }
+      //   if (unicorns.unlocked) {
+      //       if (unicorns.value < 1000000) {
+      //           var unicornPasture = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'unicornPasture')[0];
+	  //             try {
+      //               unicornPasture.controller.buyItem(unicornPasture.model, {}, function () {});
+		// 		  } catch (err) {
+		// 			  console.log(err);
+		// 		  }
+      //       } else if (unicorns.value > 1000000) {
+      //           if (gamePage.religionTab.sacrificeBtn) {
+      //               if (gamePage.religionTab.sacrificeBtn.model.allLink.visible) {
+      //                   gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function () {});
+      //               }
+      //           }
+      //       }
+      //   }
 
         // autoSacrifice Alicorns
         if (gamePage.religionTab.sacrificeAlicornsBtn) {
@@ -197,15 +177,8 @@ setInterval(
 
         // autoTrade with Leviathans
         if (gamePage.diplomacy.get('leviathans').unlocked && gamePage.diplomacy.get('leviathans').duration != 0 && gamePage.resPool.get('unobtainium').value > 5000) {
-            // gamePage.diplomacy.tradeMultiple(game.diplomacy.get("leviathans"),1);
-            gamePage.diplomacy.tradeAll(game.diplomacy.get("leviathans"));
+            // gamePage.diplomacy.tradeAll(game.diplomacy.get("leviathans"));
         }
-
-        // autoBuy Fields
-        // if (gamePage.bld.getBuildingExt('field').meta.unlocked) {
-        //     var fieldBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'field')[0];
-        //     fieldBtn.controller.buyItem(fieldBtn.model, {}, function () {});
-        // }
 
         // autoBuilds
 	    var priorityBuilds = ['field', 'pasture', 'aqueduct', // Food Production
@@ -213,10 +186,10 @@ setInterval(
             'library', 'academy', 'observatory', 'biolab', // Science
             'barn', 'warehouse', 'harbor', // Storage
             'mine', 'quarry', 'lumberMill', 'oilWell', 'accelerator', // Resources
-            'steamworks', 'magneto', 'smelter', 'calciner', 'factory', 'reactor', // Industry
-            'amphitheatre', 'chapel', 'temple', // Culture
+            // 'steamworks', 'magneto', 'smelter', 'calciner', 'factory', 'reactor', // Industry
+            // 'amphitheatre', 'chapel', 'temple', // Culture
             'workshop', 'tradepost', 'mint', 'unicornPasture', 'brewery', // Other
-            'ziggurat', 'chronosphere', // Mega Structures
+            // 'ziggurat', 'chronosphere', // Mega Structures
         ];
 
         for (var bld = 0; bld < priorityBuilds.length; bld++) {
@@ -232,42 +205,6 @@ setInterval(
                 });
             }
         }
-
-	  // console.log(gamePage.bld.getBuildingExt('field').meta.unlocked);
-	  // var fieldBtn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'field')[0];
-	  // console.log(fieldBtn);
-	  // fieldBtn.controller.buyItem(fieldBtn.model, {}, function() {});
-
-	  // if (uranium.unlocked) {
-      //     if (gamePage.bld.getBuildingExt('reactor').meta.unlocked) {
-      //         btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'reactor')[0];
-      //         btn.controller.buyItem(btn.model, {}, function(result) {
-      //             if (result) {
-      //                 btn.update();
-      //                 gamePage.msg('Build: ' + btn.model.name );
-      //                 return;
-      //             }
-      //         });
-      //     }
-	  // }
-
-      // var kittens = gamePage.village.getKittens();
-      // var secondTierBuilds = ['accelerator', 'biolab'];
-      // for (var bld2 = 0; bld2 < secondTierBuilds.length; bld2++) {
-      //     if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.unlocked) {
-      //         if (gamePage.bld.getBuildingExt(secondTierBuilds[bld2]).meta.val < kittens / 4) {
-      //             btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == secondTierBuilds[bld2])[0];
-      //             // btn.controller.buyItem(btn.model, {}, function() {});
-      //             btn.controller.buyItem(btn.model, {}, function(result) {
-      //                 if (result) {
-      //                     btn.update();
-      //                     gamePage.msg('Build: ' + btn.model.name );
-      //                     return;
-      //                 }
-      //             });
-      //         }
-      //     }
-      // }
 
       var farmer = gamePage.village.getJob('farmer');
 	  if (farmer.unlocked) {
@@ -309,9 +246,6 @@ setInterval(
           // Furthest Ring
           ];
 
-      // for (var p = 0; p < priSpaceBuilds.length; p++) {
-		  // console.log(priSpaceBuilds[p]);
-      // if (gamePage.spaceTab.visible) {
       if (gamePage.science.get('rocketry').unlocked) {
           for (var z = 0; z < gamePage.spaceTab.planetPanels.length; z++) {
               var spBuild = gamePage.spaceTab.planetPanels[z].children;
@@ -319,13 +253,13 @@ setInterval(
                   for (var sp = 0; sp < spBuild.length; sp++) {
                       if (spBuild[sp].model.metadata.unlocked) {
                           if (priSpaceBuilds.includes(spBuild[sp].model.metadata.name)) {
-                              spBuild[sp].controller.buyItem(spBuild[sp].model, {}, function(result) {
-                                  if (result) {
-                                      spBuild[sp].update();
-                                      gamePage.msg('Build in Space: ' + spBuild[sp].model.name);
-                                      return;
-                                  }
-                              });
+                              // spBuild[sp].controller.buyItem(spBuild[sp].model, {}, function(result) {
+                              //     if (result) {
+                              //         spBuild[sp].update();
+                              //         gamePage.msg('Build in Space: ' + spBuild[sp].model.name);
+                              //         return;
+                              //     }
+                              // });
                           }
                       }
                   }
@@ -334,12 +268,11 @@ setInterval(
               }
           }
       }
-	  	// }
 
        if (gamePage.workshop.get("chronoforge").researched && gamePage.resPool.get("timeCrystal").value > 500) {
-       var chronoforge = gamePage.timeTab.cfPanel.children[0].children;
-       chronoforge[0].controller.doShatterAmt(chronoforge[0].model, gamePage.calendar.yearsPerCycle)
-       chronoforge[0].update();
+           var chronoforge = gamePage.timeTab.cfPanel.children[0].children;
+           // chronoforge[0].controller.doShatterAmt(chronoforge[0].model, gamePage.calendar.yearsPerCycle)
+           chronoforge[0].update();
 	   }
 
     game.tick();
