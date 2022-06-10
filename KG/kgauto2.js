@@ -464,7 +464,7 @@ setInterval(
                               spBuild[sp].controller.buyItem(spBuild[sp].model, {}, function(result) {
                                   if (result) {
                                       spBuild[sp].update();
-                                      gamePage.msg('Build in Space: ' + spBuild[sp].model.name);
+                                      // gamePage.msg('Build in Space: ' + spBuild[sp].model.name);
                                       return;
                                   }
                               });
