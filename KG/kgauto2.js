@@ -337,14 +337,15 @@ setInterval(
 
       // autoSacrifice Unicorns - TESTING
         if (unicorns.unlocked) {
-            if (unicorns.value < 1000000) {
+            var threshold = gamePage.getResourcePerTick('unicorns', true) * gamePage.getTicksPerSecondUI() * 300;
+            if (unicorns.value < 10000000) {
                 var unicornPasture = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == 'unicornPasture')[0];
 	              try {
                     unicornPasture.controller.buyItem(unicornPasture.model, {}, function () {});
 				  } catch (err) {
 					  console.log(err);
 				  }
-            } else if (unicorns.value > 1000000) {
+            } else if (unicorns.value > threshold) {
                 if (gamePage.religionTab.sacrificeBtn) {
                     if (gamePage.religionTab.sacrificeBtn.model.allLink.visible) {
                         gamePage.religionTab.sacrificeBtn.controller.transform(gamePage.religionTab.sacrificeBtn.model, 1, {}, function () {});
@@ -398,7 +399,7 @@ setInterval(
         ];
 
         for (var bld = 0; bld < priorityBuilds.length; bld++) {
-            if (gamePage.bld.getBuildingExt(priorityBuilds[bld]).meta.unlocked) {
+            if (gamePage.bld.getBuildingExt(priorityBuilds[bld]).meta.unlocked && gamePage.bld.getBuildingExt(priorityBuilds[bld]).meta.val < gamePage.village.getKittens()/10) {
                 btn = gamePage.bldTab.children.filter(res => res.model.metadata && res.model.metadata.unlocked && res.model.metadata.name == priorityBuilds[bld])[0];
                 // btn.controller.buyItem(btn.model, {}, function () {});
                 btn.controller.buyItem(btn.model, {}, function(result) {
@@ -413,7 +414,7 @@ setInterval(
 
       var farmer = gamePage.village.getJob('farmer');
 	  if (farmer.unlocked) {
-		  if (farmer.value < 10 && game.village.getFreeKittens() != 0) {
+		  if (farmer.value < 5 && game.village.getFreeKittens() != 0) {
               gamePage.village.assignJob(farmer, 1);
 		  }
 	  }
@@ -442,15 +443,15 @@ setInterval(
           'moonOutpost', // Redmoon
           // 'moonBase', // Redmoon
           'planetCracker', 'hydrofracturer', 'spiceRefinery', // Dune
-          'researchVessel', // Piscine
+          // 'researchVessel', // Piscine
           // 'orbitalArray', // Piscine
           'sunlifter', 'heatsink', // 'containmentChamber', 'sunforge', // Helios
-          'cryostation', // T-Minus
-          'spaceBeacon', // Kairo
-          'terraformingStation', 'hydroponics', // Yarn
-          'hrHarvester', // Umbra
+          // 'cryostation', // T-Minus
+          // 'spaceBeacon', // Kairo
+          // 'terraformingStation', 'hydroponics', // Yarn
+          // 'hrHarvester', // Umbra
           // 'entanglementStation', // Charon
-          'tectonic', 'moltenCore', // Centaurus System
+          // 'tectonic', 'moltenCore', // Centaurus System
           // Furthest Ring
           ];
 
@@ -479,9 +480,14 @@ setInterval(
 
        if (gamePage.workshop.get("chronoforge").researched && gamePage.resPool.get("timeCrystal").value > 500) {
            var chronoforge = gamePage.timeTab.cfPanel.children[0].children;
-           chronoforge[0].controller.doShatterAmt(chronoforge[0].model, gamePage.calendar.yearsPerCycle)
+           // chronoforge[0].controller.doShatterAmt(chronoforge[0].model, gamePage.calendar.yearsPerCycle)
            chronoforge[0].update();
 	   }
+
+       // Extras
+       // (gamePage.getResourcePerTick('unicorns', true);
+      // console.log(gamePage.getResourcePerTick('unicorns', true) * gamePage.getTicksPerSecondUI());
+      // var threshold = gamePage.getResourcePerTick('unicorns', true) * gamePage.getTicksPerSecondUI() * 300;
 
     game.tick();
 
