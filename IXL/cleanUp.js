@@ -18,3 +18,6 @@ for (var i = practice.length - 1; i >=0; i--) {
 
 // Remove Footer
 document.getElementsByClassName('site-nav-footer')[0].remove();
+
+// Engage Print Window
+window.print();
