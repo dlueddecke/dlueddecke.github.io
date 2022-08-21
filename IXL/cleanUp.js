@@ -1,2 +1,1 @@
-var printIcon = document.getElementById('lesson-print-button-container');
-printIcon.remove();
+document.getElementById('lesson-print-button-container').remove();
