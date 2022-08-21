@@ -10,5 +10,11 @@ document.getElementsByClassName('lesson-header-content')[0].remove();
 // Remove Sticky Section
 document.getElementsByClassName('sticky-section')[0].remove();
 
+// Remove All "Try some practice problems!"
+var practice = document.getElementsByClassName('inline-skill-wrapper');
+for (var i = 0; i < practice.length; i++) {
+  practice[i].parentElement.remove();
+}
+
 // Remove Footer
 document.getElementsByClassName('stie-nav-footer')[0].remove();
