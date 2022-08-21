@@ -19,3 +19,5 @@ for (var i = 0; i < practice.length; i++) {
 
 // Remove Footer
 document.getElementsByClassName('site-nav-footer')[0].remove();
+
+alert(practice.length);
