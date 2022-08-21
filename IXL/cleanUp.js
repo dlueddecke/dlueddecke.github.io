@@ -19,5 +19,10 @@ for (var i = practice.length - 1; i >=0; i--) {
 // Remove Footer
 document.getElementsByClassName('site-nav-footer')[0].remove();
 
+var pix = document.getElementsByClassName('diagramLabelContainer');
+for (var j = 0; j < pix.length; j++) {
+  pix[i].style.break-inside = avoid;
+}
+
 // Engage Print Window
 window.print();
