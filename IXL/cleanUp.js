@@ -10,14 +10,24 @@ document.getElementsByClassName('lesson-header-content')[0].remove();
 // Remove Sticky Section
 document.getElementsByClassName('sticky-section')[0].remove();
 
+// // Remove All "Try some practice problems!"
+// var practice = document.getElementsByClassName('inline-skill-wrapper');
+// for (var i = 0; i < practice.length; i++) {
+//   alert(practice[i])
+//   practice[i].parentNode.removeChild(practice[i]);
+// //   practice[i].remove();
+// }
+
 // Remove All "Try some practice problems!"
 var practice = document.getElementsByClassName('inline-skill-wrapper');
-for (var i = 0; i < practice.length; i++) {
-  practice[i].parentNode.removeChild(practice[i]);
+for (var i = practice.length - 1; i >=0; i--) {
+//   alert(practice[i])
+  practice[i].parentNode.remove();
+//   practice[i].parentNode.removeChild(practice[i]);
 //   practice[i].remove();
 }
 
 // Remove Footer
 document.getElementsByClassName('site-nav-footer')[0].remove();
 
-alert(practice.length);
+// alert(practice.length);
