@@ -17,4 +17,4 @@ for (var i = 0; i < practice.length; i++) {
 }
 
 // Remove Footer
-document.getElementsByClassName('stie-nav-footer')[0].remove();
+document.getElementsByClassName('site-nav-footer')[0].remove();
