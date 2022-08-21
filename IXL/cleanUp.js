@@ -13,7 +13,7 @@ document.getElementsByClassName('sticky-section')[0].remove();
 // Remove All "Try some practice problems!"
 var practice = document.getElementsByClassName('inline-skill-wrapper');
 for (var i = 0; i < practice.length; i++) {
-  practice[i].parentElement.remove();
+  practice[i].parentNode.remove();
 }
 
 // Remove Footer
