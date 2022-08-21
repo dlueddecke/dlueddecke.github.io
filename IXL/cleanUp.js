@@ -6,3 +6,6 @@ document.getElementById('lesson-print-button-container').remove();
 
 // Remove Social Media Buttons
 document.getElementsByClassName('lesson-header-content')[0].remove();
+
+// Remove Sticky Section
+document.getElementsByClassName('sticky-section')[0].remove();
