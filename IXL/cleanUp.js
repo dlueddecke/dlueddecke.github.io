@@ -56,6 +56,5 @@ document.querySelectorAll('h1').forEach(e=>e.style.cssText+='break-before:auto;b
 Array.from(document.querySelectorAll('.inline-skill-wrapper')).slice().reverse().forEach(e=>e.parentNode.remove());
 document.querySelectorAll('.diagramLabelContainer,.qTable,.qreactbridge,.table').forEach(e=>e.style['break-inside']='avoid');
 document.querySelectorAll('.secContentPiece').forEach(e=>e.style.cssText+='break-before:auto;break-after:auto');
-document.styleSheets[0].insertRule('@media print {h1 {break-before: auto; break-after: avoid-page;}}');
-console.log(document.styleSheets[0]);
+document.styleSheets[0].insertRule('@media print{h1{break-before:auto;break-after:avoid-page;}}');
 window.print();
