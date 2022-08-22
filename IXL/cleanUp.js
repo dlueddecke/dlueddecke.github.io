@@ -38,5 +38,5 @@ document.getElementsByClassName('site-nav-footer')[0].remove();
 var pix = document.querySelectorAll('.diagramLabelContainer, .qTable, .qreactbridge, .table');
 for (var j = 0; j < pix.length; j++) {pix[j].style['break-inside'] = 'avoid';}
 var titles = document.querySelectorAll('h1');
-for (var k = 0; k < titles.length; k++) {titles[k].style['break-after'] = 'avoid-page';}
+for (var k = 0; k < titles.length; k++) {titles[k].style['break-after'] = 'avoid-page'; titles[k].style['orphans'] = 3;}
 window.print();
