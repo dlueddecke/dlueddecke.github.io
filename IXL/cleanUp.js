@@ -49,7 +49,7 @@ document.querySelectorAll('.diagramLabelContainer,.qTable,.qreactbridge,.table')
 document.querySelectorAll('h1').forEach(e=>e.style.cssText+='break-after:avoid-page;orphans:3');
 window.print();
 
-//Shortened Version #2 with @media
+//Shortened Version #2 with @media IN USE AS OF 8.22.2022
 document.querySelectorAll('.site-nav-header,#lesson-print-button-container,.lesson-header-content,.sticky-section,#footer-spacer,.site-nav-footer').forEach(e=>e.remove());
 document.getElementsByClassName('lesson-header-text')[0].style['width']='100%';
 document.querySelectorAll('h1').forEach(e=>e.style.cssText+='break-before:auto;break-after:avoid-page');
