@@ -40,3 +40,12 @@ for (var j = 0; j < pix.length; j++) {pix[j].style['break-inside'] = 'avoid';}
 var titles = document.querySelectorAll('h1');
 for (var k = 0; k < titles.length; k++) {titles[k].style['break-after'] = 'avoid-page'; titles[k].style['orphans'] = 3;}
 window.print();
+
+// Shortened Version
+document.querySelectorAll('.site-nav-header,#lesson-print-button-container,.lesson-header-content,.sticky-section,.site-nav-footer').forEach(e=>e.remove());
+document.getElementsByClassName('lesson-header-text')[0].style['width']='100%';
+var practice=document.getElementsByClassName('inline-skill-wrapper');
+for(var i=practice.length-1;i>=0;i--){practice[i].parentNode.remove();}
+document.querySelectorAll('.diagramLabelContainer,.qTable,.qreactbridge,.table').forEach(e=>e.style['break-inside']='avoid');
+document.querySelectorAll('h1').forEach(e=>e.style.cssText+='break-after:avoid-page;orphans:3');
+window.print();
