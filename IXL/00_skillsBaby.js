@@ -1,8 +1,8 @@
-before_filter :set_csp
+// before_filter :set_csp
 
-def set_csp
-  response.headers['Content-Security-Policy'] = "default-src *; script-src https://github.com/; style-src https://github.com/"
-end
+// def set_csp
+  // response.headers['Content-Security-Policy'] = "default-src *; script-src https://github.com/; style-src https://github.com/"
+// end
 
 document.querySelectorAll('.site-nav-header, .site-nav-footer, .skill-tree-subnav-content, .skill-tree-aside, .skill-tree-content-tabs, .lesson-tree-body, .description').forEach(e=>e.remove());
 switch(document.getElementsByClassName('crisp-splash-header')[0].textContent.trim()) {
