@@ -27,26 +27,3 @@ Array.from(document.querySelectorAll('tr')).slice().reverse().forEach(e=>wrap(e,
 document.querySelectorAll('td').forEach(e=>e.style['padding']='5px');
 document.querySelectorAll('table').forEach(e=>e.style.cssText+='display:inline-table;vertical-align:top;border:1px solid #C0C0C0;width:47.75%;');
 document.querySelectorAll('article, .skill-tree-content').forEach(e=>e.style['padding-left']='0');
-
-// No Borders
-document.querySelectorAll('table').forEach(e=>e.style.border='0px');
-
-// Borders
-document.querySelectorAll('table').forEach(e=>e.style.border='1px solid #C0C0C0');
-
-// One Column
-document.querySelectorAll('table').forEach(e=>e.style.width='95.875%');
-
-// Two Columns
-document.querySelectorAll('table').forEach(e=>e.style.width='47.75%');
-
-// Three Columns
-document.querySelectorAll('table').forEach(e=>e.style.width='31.625%');
-
-// Others
-document.querySelectorAll('.crisp-u-1-3').forEach(e=>e.outerHTML = e.innerHTML);
-document.querySelectorAll('.crisp-g').forEach(e=>e.outerHTML = e.innerHTML);
-document.querySelectorAll('table').forEach(e=>e.style['display']='inline-table');
-document.querySelectorAll('table').forEach(e=>e.style['vertical-align']='top');
-Array.from(document.querySelectorAll('table')).slice().reverse().forEach(e=>e.style.border='1px solid #C0C0C0');
-Array.from(document.querySelectorAll('table')).slice().reverse().forEach(e=>e.style.width='47.75%');
