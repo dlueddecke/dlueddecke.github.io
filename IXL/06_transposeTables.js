@@ -36,7 +36,7 @@ newOrder.forEach(function(idx) {
 	elements.appendChild(items[idx].cloneNode(true));
 });
 
-wrapper[0].innerHTML = null;
-wrapper[0].appendChild(elements);
+wrapper.innerHTML = null;
+wrapper.appendChild(elements);
 
 // https://stackoverflow.com/questions/34685316/reorder-html-elements-in-dom
