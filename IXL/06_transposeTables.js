@@ -28,23 +28,10 @@ for (var i = 0; i < r; i++) {
 }
 
 var items = oldTableArray[0].children;
+var elements = document.createDocumentFragment();
 
+newOrder.forEach(function(idx) {
+	elements.appendChild(items[idx].cloneNode(true));
+});
 
-newOrder.forEach(e=>document.body.appendChild(e));
-
-
-var parentHost = oldOrder[0].parentNode;
-newOrder.forEach(e=>document.body.parentHost.appendChild(e));
-
-var parentHost = oldOrder[0].parentElement;
-newOrder.forEach(e=>document.body.parentHost.appendChild(e));
-
-newOrder.forEach(e=>document.body.parentHost.importNode(e, true));
-
-	}
-	catch (err) {
-  		console.log(err);
-		
 // https://stackoverflow.com/questions/34685316/reorder-html-elements-in-dom
-
-var arr
