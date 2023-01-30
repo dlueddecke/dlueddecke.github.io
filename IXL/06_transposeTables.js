@@ -1,3 +1,5 @@
+// https://stackoverflow.com/questions/34685316/reorder-html-elements-in-dom
+
 function range(start, end) {
   return Array.from({ length: end - start + 1 }, (_, i) => i)
 }
@@ -38,5 +40,3 @@ newOrder.forEach(function(idx) {
 
 wrapper.innerHTML = null;
 wrapper.appendChild(elements);
-
-// https://stackoverflow.com/questions/34685316/reorder-html-elements-in-dom
