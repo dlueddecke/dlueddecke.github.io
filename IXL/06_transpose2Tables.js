@@ -10,10 +10,7 @@ var n = oldTableArray.length;
 var r = Math.ceil(n / c);
 var oldOrder = range(0, n - 1);
 var firstCol = oldOrder.slice(0, r);
-// var y = n - r;
-// var b = Math.ceil(y / (c - 1));
 var secondCol = oldOrder.slice(r, n);
-// var thirdCol = oldOrder.slice(r + b, n);
 
 var newOrder = [];
 for (var i = 0; i < r; i++) {
@@ -23,9 +20,6 @@ for (var i = 0; i < r; i++) {
 	if (typeof(secondCol[i]) === 'number') {
 		newOrder.push(secondCol[i]);
 	}
-// 	if (typeof(thirdCol[i]) === 'number') {
-// 		newOrder.push(thirdCol[i]);
-// 	}
 }
 
 var wrapper = oldTableArray[0].parentElement;
