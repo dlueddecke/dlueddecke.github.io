@@ -5,15 +5,13 @@ function range(start, end) {
 }
 
 var oldTableArray = document.getElementsByTagName('table');
-
-var n = oldTableArray.length;
 var c = 3;
-var r = Math.ceil(n / 3);
-
+var n = oldTableArray.length;
+var r = Math.ceil(n / c);
 var oldOrder = range(0, n - 1);
 var firstCol = oldOrder.slice(0, r);
 var y = n - r;
-var b = Math.ceil(y / 2);
+var b = Math.ceil(y / (c - 1));
 var secondCol = oldOrder.slice(r, r + b);
 var thirdCol = oldOrder.slice(r + b, n);
 
