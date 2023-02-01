@@ -14,8 +14,8 @@ var oldOrder = range(0, n - 1);
 
 var everyFirst = (arr, nth) => arr.filter((e, i) => (i + 1) % nth === nth - 1);
 var everySecond = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
-var firstCol = everyFirst(oldOrder, 3);
-var secondCol = everySecond(oldOrder, 3);
+var firstCol = everyFirst(oldOrder, 2);
+var secondCol = everySecond(oldOrder, 2);
 
 var newOrder = [...firstCol, ...secondCol];
 
