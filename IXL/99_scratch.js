@@ -65,4 +65,7 @@ switch(true) {
 }
 
 document.querySelectorAll('.crisp-splash-header, .skill-tree-header').forEach(e=>e.remove());
-Array.from(document.getElementsByTagName('td')).forEach(e => e.insertBefore(document.createTextNode(newName), e.children[0]));
+
+Array.from(document.getElementsByTagName('td')).forEach(e => e.insertBefore(document.createElement('p'), e.children[0]));
+Array.from(document.getElementsByTagName('p')).forEach(e=>e.style.cssText+=`font-weight:bold;color:${color}`);
+Array.from(document.getElementsByTagName('p')).forEach(e=>e.innerHTML = `${newName}`);
