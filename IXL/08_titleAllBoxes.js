@@ -68,4 +68,4 @@ document.querySelectorAll('.crisp-splash-header, .skill-tree-header').forEach(e=
 Array.from(document.getElementsByTagName('td')).forEach(e => e.insertBefore(document.createElement('p'), e.children[0]));
 Array.from(document.getElementsByTagName('p')).forEach(e=>e.style.cssText+=`font-weight:bold;color:${color}`);
 Array.from(document.getElementsByTagName('p')).forEach(e=>e.innerHTML = `${newName}`);
-document.querySelectorAll('.skill-tree-category, p').forEach(e=>e.style.cssText+='margin:0;padding:0');
+document.querySelectorAll('.skill-tree-category, .skill-tree-body, p').forEach(e=>e.style.cssText+='margin:0;padding:0');
