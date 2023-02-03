@@ -64,5 +64,5 @@ switch(true) {
 		var color = '#000000';
 }
 
-document.getElementsByClassName('crisp-splash-header')[0].remove();
+document.querySelectorAll('.crisp-splash-header, .skill-tree-header').forEach(e=>e.remove());
 Array.from(document.getElementsByTagName('td')).forEach(e => e.insertBefore(document.createTextNode(newName), e.children[0]));
