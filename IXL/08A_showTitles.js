@@ -44,7 +44,7 @@ switch(true) {
 	case document.URL.endsWith('/calculus'):
 		var newName = 'C';    	
     break;		
-  	default:
+	default:
 		var newName = 'M';
 }
 
