@@ -45,7 +45,6 @@ switch(true) {
 		var color = '#000000';
     break;		
   	default:
-		var newName = 'M';
 		var color = '#000000';
 }
 
