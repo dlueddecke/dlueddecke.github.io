@@ -27,3 +27,4 @@ Array.from(document.querySelectorAll('tr')).slice().reverse().forEach(e=>wrap(e,
 document.querySelectorAll('td').forEach(e=>e.style['padding']='5px');
 document.querySelectorAll('table').forEach(e=>e.style.cssText+='display:inline-table;vertical-align:top;border:1px solid #C0C0C0;width:47.75%;');
 document.querySelectorAll('article, .skill-tree-content').forEach(e=>e.style['padding-left']='0');
+document.querySelectorAll('.category-code, .category-name, .skill-tree-skill-name').forEach(e=>e.style.color = '#000000');
