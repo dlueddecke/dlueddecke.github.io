@@ -1,5 +1,16 @@
-setInterval(
-    function () {
+// ==UserScript==
+// @name         Highlight Emails
+// @version      1.0
+// @description  Highlight Emails
+// @author       dlueddecke
+// @match        https://mail.google.com/*
+// @require      http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
+// @grant        none
+// ==/UserScript==
+
+(function () {
+    'use strict';
+    
         var emails = document.querySelectorAll("tr");
         for (var i = 0; i < emails.length; i++) {
             switch (true) {
@@ -24,4 +35,4 @@ setInterval(
             } // end of switch case block
         } // end of for loop
     } // end of function
-    , 10000);
+ )();
